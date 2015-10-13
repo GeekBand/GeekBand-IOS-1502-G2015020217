@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790031BCD2DC900C39944 /* ATLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790051BCD2DC900C39944 /* ATRegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E484161F1BCCCC02008FC68E /* ATMoran_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */; };
 		E484162A1BCCCC02008FC68E /* ATMoran_IOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E48416291BCCCC02008FC68E /* ATMoran_IOSUITests.m */; };
 		E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E484163B1BCCD2CC008FC68E /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
@@ -15,7 +17,6 @@
 		E484164D1BCCD9B0008FC68E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E484164C1BCCD9B0008FC68E /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E48416541BCCDD67008FC68E /* Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48416531BCCDD67008FC68E /* Main.xcassets */; settings = {ASSET_TAGS = (); }; };
 		E48416581BCCDDC9008FC68E /* ATLoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E484165C1BCCDE26008FC68E /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E484165B1BCCDE26008FC68E /* ATLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E46790021BCD2DC900C39944 /* ATLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginViewController.h; sourceTree = "<group>"; };
+		E46790031BCD2DC900C39944 /* ATLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginViewController.m; sourceTree = "<group>"; };
+		E46790041BCD2DC900C39944 /* ATRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterViewController.h; sourceTree = "<group>"; };
+		E46790051BCD2DC900C39944 /* ATRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterViewController.m; sourceTree = "<group>"; };
 		E48416011BCCCC02008FC68E /* ATMoran_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATMoran_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E484161A1BCCCC02008FC68E /* ATMoran_IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATMoran_IOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMoran_IOSTests.m; sourceTree = "<group>"; };
@@ -51,8 +56,6 @@
 		E484164C1BCCD9B0008FC68E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
 		E48416531BCCDD67008FC68E /* Main.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Main.xcassets; sourceTree = "<group>"; };
 		E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ATLoginAndRegister.storyboard; sourceTree = "<group>"; };
-		E484165A1BCCDE26008FC68E /* ATLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginViewController.h; sourceTree = "<group>"; };
-		E484165B1BCCDE26008FC68E /* ATLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E46790011BCD2DC900C39944 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				E46790021BCD2DC900C39944 /* ATLoginViewController.h */,
+				E46790031BCD2DC900C39944 /* ATLoginViewController.m */,
+				E46790041BCD2DC900C39944 /* ATRegisterViewController.h */,
+				E46790051BCD2DC900C39944 /* ATRegisterViewController.m */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
 		E48415F81BCCCC01008FC68E = {
 			isa = PBXGroup;
 			children = (
@@ -154,7 +168,7 @@
 		E484163C1BCCD2CC008FC68E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E48416591BCCDDFA008FC68E /* LoginAndRegister */,
+				E46790011BCD2DC900C39944 /* LoginAndRegister */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -238,15 +252,6 @@
 			children = (
 			);
 			path = Utility;
-			sourceTree = "<group>";
-		};
-		E48416591BCCDDFA008FC68E /* LoginAndRegister */ = {
-			isa = PBXGroup;
-			children = (
-				E484165A1BCCDE26008FC68E /* ATLoginViewController.h */,
-				E484165B1BCCDE26008FC68E /* ATLoginViewController.m */,
-			);
-			name = LoginAndRegister;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,7 +386,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E484164B1BCCD2CC008FC68E /* main.m in Sources */,
-				E484165C1BCCDE26008FC68E /* ATLoginViewController.m in Sources */,
+				E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */,
+				E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */,
 				E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,6 +595,7 @@
 				E48416301BCCCC02008FC68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E48416311BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSTests" */ = {
 			isa = XCConfigurationList;
@@ -597,6 +604,7 @@
 				E48416331BCCCC02008FC68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E48416341BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -605,6 +613,7 @@
 				E48416361BCCCC02008FC68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

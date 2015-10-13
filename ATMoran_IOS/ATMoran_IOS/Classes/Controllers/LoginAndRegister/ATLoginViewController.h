@@ -12,9 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
 
 - (IBAction)loginButtonClicked:(id)sender;
-- (IBAction)touchDownAction:(id)sender;
 
 
 @end
