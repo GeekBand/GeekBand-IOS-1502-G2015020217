@@ -13,6 +13,9 @@
 		E48416491BCCD2CC008FC68E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48416441BCCD2CC008FC68E /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		E484164B1BCCD2CC008FC68E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E48416471BCCD2CC008FC68E /* main.m */; settings = {ASSET_TAGS = (); }; };
 		E484164D1BCCD9B0008FC68E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E484164C1BCCD9B0008FC68E /* Default-568h@2x.png */; settings = {ASSET_TAGS = (); }; };
+		E48416541BCCDD67008FC68E /* Main.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48416531BCCDD67008FC68E /* Main.xcassets */; settings = {ASSET_TAGS = (); }; };
+		E48416581BCCDDC9008FC68E /* ATLoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */; settings = {ASSET_TAGS = (); }; };
+		E484165C1BCCDE26008FC68E /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E484165B1BCCDE26008FC68E /* ATLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,10 @@
 		E48416461BCCD2CC008FC68E /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E48416471BCCD2CC008FC68E /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E484164C1BCCD9B0008FC68E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../Default-568h@2x.png"; sourceTree = "<group>"; };
+		E48416531BCCDD67008FC68E /* Main.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Main.xcassets; sourceTree = "<group>"; };
+		E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ATLoginAndRegister.storyboard; sourceTree = "<group>"; };
+		E484165A1BCCDE26008FC68E /* ATLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginViewController.h; sourceTree = "<group>"; };
+		E484165B1BCCDE26008FC68E /* ATLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,13 +131,12 @@
 		E48416381BCCD2CC008FC68E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E484164E1BCCDC76008FC68E /* Library */,
+				E484164F1BCCDC76008FC68E /* Network */,
 				E48416391BCCD2CC008FC68E /* APPDelegate */,
 				E484163C1BCCD2CC008FC68E /* Controllers */,
 				E484163D1BCCD2CC008FC68E /* Global */,
 				E484163E1BCCD2CC008FC68E /* Models */,
-				E484163F1BCCD2CC008FC68E /* Parsers */,
-				E48416401BCCD2CC008FC68E /* Requires */,
-				E48416411BCCD2CC008FC68E /* Utility */,
 				E48416421BCCD2CC008FC68E /* Views */,
 			);
 			path = Classes;
@@ -148,6 +154,7 @@
 		E484163C1BCCD2CC008FC68E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				E48416591BCCDDFA008FC68E /* LoginAndRegister */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -166,30 +173,10 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		E484163F1BCCD2CC008FC68E /* Parsers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Parsers;
-			sourceTree = "<group>";
-		};
-		E48416401BCCD2CC008FC68E /* Requires */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Requires;
-			sourceTree = "<group>";
-		};
-		E48416411BCCD2CC008FC68E /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		E48416421BCCD2CC008FC68E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,6 +186,7 @@
 			children = (
 				E484164C1BCCD9B0008FC68E /* Default-568h@2x.png */,
 				E48416441BCCD2CC008FC68E /* Assets.xcassets */,
+				E48416531BCCDD67008FC68E /* Main.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -210,6 +198,55 @@
 				E48416471BCCD2CC008FC68E /* main.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E484164E1BCCDC76008FC68E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Library;
+			path = ATMoran_IOS/Classes/Library;
+			sourceTree = SOURCE_ROOT;
+		};
+		E484164F1BCCDC76008FC68E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E48416501BCCDC76008FC68E /* Parsers */,
+				E48416511BCCDC76008FC68E /* Requires */,
+				E48416521BCCDC76008FC68E /* Utility */,
+			);
+			name = Network;
+			path = ATMoran_IOS/Classes/Network;
+			sourceTree = SOURCE_ROOT;
+		};
+		E48416501BCCDC76008FC68E /* Parsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Parsers;
+			sourceTree = "<group>";
+		};
+		E48416511BCCDC76008FC68E /* Requires */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Requires;
+			sourceTree = "<group>";
+		};
+		E48416521BCCDC76008FC68E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		E48416591BCCDDFA008FC68E /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				E484165A1BCCDE26008FC68E /* ATLoginViewController.h */,
+				E484165B1BCCDE26008FC68E /* ATLoginViewController.m */,
+			);
+			name = LoginAndRegister;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,6 +353,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E48416491BCCD2CC008FC68E /* Assets.xcassets in Resources */,
+				E48416541BCCDD67008FC68E /* Main.xcassets in Resources */,
+				E48416581BCCDDC9008FC68E /* ATLoginAndRegister.storyboard in Resources */,
 				E484164D1BCCD9B0008FC68E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E484164B1BCCD2CC008FC68E /* main.m in Sources */,
+				E484165C1BCCDE26008FC68E /* ATLoginViewController.m in Sources */,
 				E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
