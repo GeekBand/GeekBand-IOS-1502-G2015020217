@@ -10,11 +10,17 @@
 
 @interface ATRegisterViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *comfirmpasswordTextField;
+
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
+
+@property (weak, nonatomic) IBOutlet UILabel *incorrectEmailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *incorrectPasswordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *passwordUnmatchLabel;
 
 
 

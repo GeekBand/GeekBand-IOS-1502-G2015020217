@@ -33,14 +33,16 @@
 
 #pragma mark - ButtonClicked methods
 - (IBAction)loginButtonClicked:(id)sender {
-    
-    
-    
-    
-    if ([self.passwordTextField isFirstResponder]) {
-        [self.passwordTextField resignFirstResponder];
-        [self contentScrollViewShiftRecover];
+
+    if ([self validateEmail:self.emailTextField.text] && [self validatePassword:self.passwordTextField.text]) {
+        
+        
+    }else {
+        [self shakeView:self.incorrectEmailLabel];
+        [self shakeView:self.incorrectPasswordLabel];
     }
+    
+    
 }
 
 #pragma mark - TextFieldDelegate
@@ -56,8 +58,23 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    if (textField == self.passwordTextField) {
-        [self contentScrollViewShiftRecover];
+    if (textField == self.emailTextField) {
+        
+        if ([self validateEmail:self.emailTextField.text]) {
+            self.incorrectEmailLabel.hidden = YES;
+            
+        }else {
+            self.incorrectEmailLabel.hidden = NO;
+        }
+        
+    }else if (textField == self.passwordTextField) {
+        
+        if ([self validatePassword:self.passwordTextField.text]) {
+            self.incorrectPasswordLabel.hidden = YES;
+        }else {
+            self.incorrectPasswordLabel.hidden = NO;
+        }
+        
     }
     return YES;
 }
@@ -67,8 +84,10 @@
 {
     if (textField == self.emailTextField) {
         [self.passwordTextField becomeFirstResponder];
+        
     }else {
         [textField resignFirstResponder];
+        [self contentScrollViewShiftRecover];
     }
     return YES;
 }
@@ -78,18 +97,17 @@
 {
     if (gesture.state == UIGestureRecognizerStateEnded)
     {
-        if ([self.emailTextField isFirstResponder]) {
-            [self.emailTextField resignFirstResponder];
+        if ([self.emailTextField isFirstResponder] || [self.passwordTextField isFirstResponder]) {
             
-        }else if ([self.passwordTextField isFirstResponder]){
+            [self.emailTextField resignFirstResponder];
             [self.passwordTextField resignFirstResponder];
             [self contentScrollViewShiftRecover];
             
         }
-        
     }
     
 }
+
 - (void)contentScrollViewShiftRecover{
     [UIView animateWithDuration:0.35 animations:^{
         [self.contentScrollView setContentOffset:CGPointMake(0, 0)];
@@ -97,15 +115,41 @@
 }
 
 #pragma mark - other
-- (BOOL) validateEmail: (NSString *) candidate {
+- (BOOL)validateEmail:(NSString *)candidate {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:candidate];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-
+- (BOOL)validatePassword:(NSString *)passwrod {
+    if ([passwrod length] >= 6 && [passwrod length] <= 20) {
+        return YES;
+    }
+    return NO;
 }
 
+-(void)shakeView:(UIView*)viewToShake
+{
+    CGFloat t =2.0;
+    CGAffineTransform translateRight  =CGAffineTransformTranslate(CGAffineTransformIdentity, t,0.0);
+    CGAffineTransform translateLeft =CGAffineTransformTranslate(CGAffineTransformIdentity,-t,0.0);
+    
+    viewToShake.transform = translateLeft;
+    
+    [UIView animateWithDuration:0.07 delay:0.0 options:UIViewAnimationOptionAutoreverse|UIViewAnimationOptionRepeat animations:^{
+        [UIView setAnimationRepeatCount:2.0];
+        viewToShake.transform = translateRight;
+    } completion:^(BOOL finished){
+        if(finished){
+            [UIView animateWithDuration:0.05 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+                viewToShake.transform = CGAffineTransformIdentity;
+            } completion:NULL];
+        }
+    }];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
 @end
