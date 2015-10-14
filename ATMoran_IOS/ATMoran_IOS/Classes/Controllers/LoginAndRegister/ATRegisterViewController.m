@@ -10,8 +10,10 @@
 #define yShiftpasswordTextField 40
 #define yShiftEmailTextField 5
 #import "ATRegisterViewController.h"
+#import "ATRegisterRequires.h"
 
-@interface ATRegisterViewController ()
+
+@interface ATRegisterViewController () <ATRegisterRequiresDelegate>
 {
     UITapGestureRecognizer *_tapGesture;
 }
@@ -25,7 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.registerButton.layer.cornerRadius = 5.0f;
+    self.registerButton.clipsToBounds = YES;
     
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGestrue:)];
     [self.view addGestureRecognizer:_tapGesture];
@@ -39,6 +43,18 @@
         [self validatePassword:self.passwordTextField.text] &&
         [self passwordMatch]) {
         
+        NSString *account = self.accountTextField.text;
+        NSString *email = self.emailTextField.text;
+        NSString *password = self.passwordTextField.text;
+        NSString *gbid = @"GeekBand-I150001";
+        
+        
+        ATRegisterRequires *registerReuiqre = [[ATRegisterRequires alloc] init];
+        [registerReuiqre sendRegisterRequireWithUserAccount:account
+                                                   email:email
+                                                password:password
+                                                    gbid:gbid delegate:self];
+        
         
     }else {
         [self shakeView:self.incorrectEmailLabel];
@@ -50,6 +66,19 @@
 
 - (IBAction)loginButtonClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - RegisterRequire Delegate
+- (void)registerRequireSuccess:(ATRegisterRequires *)request user:(ATUserModel *)user
+{
+    if ([user.registerReturnMessage isEqualToString:@"Register success"]) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+}
+
+- (void)registerRequireFailed:(ATRegisterRequires *)request error:(NSError *)error
+{
+    
 }
 
 #pragma mark - TextFieldDelegate

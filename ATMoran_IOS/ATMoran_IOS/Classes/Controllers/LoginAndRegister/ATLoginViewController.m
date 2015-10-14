@@ -8,8 +8,9 @@
 
 #define yShiftpasswordTextField 30
 #import "ATLoginViewController.h"
+#import "ATLoginRequires.h"
 
-@interface ATLoginViewController ()<UITextFieldDelegate>
+@interface ATLoginViewController ()<UITextFieldDelegate,ATLoginRequiresDelegate>
 {
     UITapGestureRecognizer *_tapGesture;
 }
@@ -25,6 +26,7 @@
     [super viewDidLoad];
 
     self.loginButton.layer.cornerRadius = 5.0f;
+    self.loginButton.clipsToBounds = YES;
  
     _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGestrue:)];
     [self.view addGestureRecognizer:_tapGesture];
@@ -36,10 +38,29 @@
 
     if ([self validateEmail:self.emailTextField.text] && [self validatePassword:self.passwordTextField.text]) {
         
+        NSString *email = self.emailTextField.text;
+        NSString *password = self.passwordTextField.text;
+        NSString *gbid = @"GeekBand-I150001";
+        
+        
+        ATLoginRequires *loginRequest = [[ATLoginRequires alloc] init];
+        [loginRequest sendLoginRequestWithUserEmail:email
+                                           password:password
+                                               gbid:gbid
+                                           delegate:self];
+        
         
     }else {
-        [self shakeView:self.incorrectEmailLabel];
-        [self shakeView:self.incorrectPasswordLabel];
+        
+        if (![self validateEmail:self.emailTextField.text]) {
+            self.incorrectEmailLabel.hidden = NO;
+            [self shakeView:self.incorrectEmailLabel];
+        }
+        if (![self validatePassword:self.passwordTextField.text]) {
+            self.incorrectPasswordLabel.hidden = NO;
+            [self shakeView:self.incorrectPasswordLabel];
+        }
+        
     }
     
     
@@ -112,6 +133,19 @@
     [UIView animateWithDuration:0.35 animations:^{
         [self.contentScrollView setContentOffset:CGPointMake(0, 0)];
     }];
+}
+
+#pragma mark - loginRequireDelegate
+- (void)loginRequiresSuccess:(ATLoginRequires *)requires user:(ATUserModel *)user
+{
+    if ([user.loginReturnMessage isEqualToString:@"Login success"]) {
+
+    }
+}
+
+- (void)loginRequiresFailed:(ATLoginRequires *)requires error:(NSError *)error
+{
+    
 }
 
 #pragma mark - other

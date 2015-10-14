@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E441CDB01BCE25C1007702E7 /* ATLoginRequires.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDAF1BCE25C1007702E7 /* ATLoginRequires.m */; settings = {ASSET_TAGS = (); }; };
+		E441CDB31BCE25FD007702E7 /* BLMultipartForm.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDB21BCE25FD007702E7 /* BLMultipartForm.m */; settings = {ASSET_TAGS = (); }; };
+		E441CDB61BCE2665007702E7 /* ATUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDB51BCE2665007702E7 /* ATUserModel.m */; settings = {ASSET_TAGS = (); }; };
+		E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */; settings = {ASSET_TAGS = (); }; };
+		E441CDBC1BCE368C007702E7 /* ATRegisterRequires.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */; settings = {ASSET_TAGS = (); }; };
+		E441CDC21BCE3832007702E7 /* ATRegisterRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */; settings = {ASSET_TAGS = (); }; };
 		E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790031BCD2DC900C39944 /* ATLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790051BCD2DC900C39944 /* ATRegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E484161F1BCCCC02008FC68E /* ATMoran_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */; };
@@ -37,6 +43,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E441CDAE1BCE25C1007702E7 /* ATLoginRequires.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginRequires.h; sourceTree = "<group>"; };
+		E441CDAF1BCE25C1007702E7 /* ATLoginRequires.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginRequires.m; sourceTree = "<group>"; };
+		E441CDB11BCE25FD007702E7 /* BLMultipartForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLMultipartForm.h; sourceTree = "<group>"; };
+		E441CDB21BCE25FD007702E7 /* BLMultipartForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLMultipartForm.m; sourceTree = "<group>"; };
+		E441CDB41BCE2665007702E7 /* ATUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATUserModel.h; sourceTree = "<group>"; };
+		E441CDB51BCE2665007702E7 /* ATUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATUserModel.m; sourceTree = "<group>"; };
+		E441CDB71BCE2794007702E7 /* ATLoginRequireParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginRequireParser.h; sourceTree = "<group>"; };
+		E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginRequireParser.m; sourceTree = "<group>"; };
+		E441CDBA1BCE368C007702E7 /* ATRegisterRequires.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterRequires.h; sourceTree = "<group>"; };
+		E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequires.m; sourceTree = "<group>"; };
+		E441CDC01BCE3832007702E7 /* ATRegisterRequireParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterRequireParser.h; sourceTree = "<group>"; };
+		E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequireParser.m; sourceTree = "<group>"; };
 		E46790021BCD2DC900C39944 /* ATLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginViewController.h; sourceTree = "<group>"; };
 		E46790031BCD2DC900C39944 /* ATLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginViewController.m; sourceTree = "<group>"; };
 		E46790041BCD2DC900C39944 /* ATRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterViewController.h; sourceTree = "<group>"; };
@@ -183,6 +201,8 @@
 		E484163E1BCCD2CC008FC68E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E441CDB41BCE2665007702E7 /* ATUserModel.h */,
+				E441CDB51BCE2665007702E7 /* ATUserModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +256,10 @@
 		E48416501BCCDC76008FC68E /* Parsers */ = {
 			isa = PBXGroup;
 			children = (
+				E441CDB71BCE2794007702E7 /* ATLoginRequireParser.h */,
+				E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */,
+				E441CDC01BCE3832007702E7 /* ATRegisterRequireParser.h */,
+				E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -243,6 +267,10 @@
 		E48416511BCCDC76008FC68E /* Requires */ = {
 			isa = PBXGroup;
 			children = (
+				E441CDAE1BCE25C1007702E7 /* ATLoginRequires.h */,
+				E441CDAF1BCE25C1007702E7 /* ATLoginRequires.m */,
+				E441CDBA1BCE368C007702E7 /* ATRegisterRequires.h */,
+				E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */,
 			);
 			path = Requires;
 			sourceTree = "<group>";
@@ -250,6 +278,8 @@
 		E48416521BCCDC76008FC68E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				E441CDB11BCE25FD007702E7 /* BLMultipartForm.h */,
+				E441CDB21BCE25FD007702E7 /* BLMultipartForm.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -385,9 +415,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E441CDB31BCE25FD007702E7 /* BLMultipartForm.m in Sources */,
+				E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */,
+				E441CDBC1BCE368C007702E7 /* ATRegisterRequires.m in Sources */,
 				E484164B1BCCD2CC008FC68E /* main.m in Sources */,
+				E441CDB61BCE2665007702E7 /* ATUserModel.m in Sources */,
 				E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */,
+				E441CDB01BCE25C1007702E7 /* ATLoginRequires.m in Sources */,
 				E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */,
+				E441CDC21BCE3832007702E7 /* ATRegisterRequireParser.m in Sources */,
 				E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
