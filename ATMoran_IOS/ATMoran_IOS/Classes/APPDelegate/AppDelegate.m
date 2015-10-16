@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 @interface AppDelegate ()
 
+@property (nonatomic,strong)UITabBarController *tabBarController;
+
+
 @end
 
 @implementation AppDelegate
@@ -19,8 +22,21 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     
-    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"ATLoginAndRegister" bundle:[NSBundle mainBundle]];
-    self.window.rootViewController = [loginStoryboard instantiateInitialViewController];
+//    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"ATLoginAndRegister" bundle:[NSBundle mainBundle]];
+//    self.window.rootViewController = [loginStoryboard instantiateInitialViewController];
+    
+//    UIStoryboard *myStroyboard = [UIStoryboard storyboardWithName:@"ATMy" bundle:[NSBundle mainBundle]];
+//    self.window.rootViewController = [myStroyboard instantiateViewControllerWithIdentifier:@"ATMyTableViewController"];
+//
+    
+    
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"ATMy" bundle:[NSBundle mainBundle]];
+//    self.tabBarController = [mainStoryboard instantiateInitialViewController];
+//    self.window.rootViewController = self.tabBarController;
+
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
     
     return YES;
 }

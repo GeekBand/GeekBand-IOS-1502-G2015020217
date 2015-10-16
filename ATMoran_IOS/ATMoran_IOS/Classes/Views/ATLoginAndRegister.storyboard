@@ -23,7 +23,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5N-cL-lun" userLabel="View">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <userGuides>
-                                            <userLayoutGuide location="317" affinity="minY"/>
+                                            <userLayoutGuide location="318" affinity="minY"/>
                                         </userGuides>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="auK-No-08C">
