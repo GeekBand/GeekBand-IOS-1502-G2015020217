@@ -9,6 +9,15 @@
 #import "ATBaseViewController.h"
 
 @interface ATHeadImageViewController : ATBaseViewController
+
+
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectImageButton;
+@property (nonatomic, weak) UIImage *headImage;
+
+
+- (IBAction)doneButtonClicked:(id)sender;
+
+- (IBAction)selectImageButtonClicked:(id)sender;
 
 @end

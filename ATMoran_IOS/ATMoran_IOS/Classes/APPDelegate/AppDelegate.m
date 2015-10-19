@@ -21,24 +21,40 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    
-//    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"ATLoginAndRegister" bundle:[NSBundle mainBundle]];
-//    self.window.rootViewController = [loginStoryboard instantiateInitialViewController];
-    
-//    UIStoryboard *myStroyboard = [UIStoryboard storyboardWithName:@"ATMy" bundle:[NSBundle mainBundle]];
-//    self.window.rootViewController = [myStroyboard instantiateViewControllerWithIdentifier:@"ATMyTableViewController"];
-//
-    
-    
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"ATMy" bundle:[NSBundle mainBundle]];
-//    self.tabBarController = [mainStoryboard instantiateInitialViewController];
-//    self.window.rootViewController = self.tabBarController;
 
-    
+//    [self loadLoginView];
+ 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
     
+    
     return YES;
+}
+
+- (void)loadLoginView
+{
+    UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"ATLoginAndRegister" bundle:[NSBundle mainBundle]];
+    self.loginViewController = [loginStoryboard instantiateInitialViewController];
+    self.window.rootViewController = self.loginViewController;
+    
+}
+
+- (void)loadMainViewWithController:(UIViewController *)controller
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UITabBarController *tabBarController = [mainStoryboard instantiateInitialViewController];
+    
+    [controller presentViewController:tabBarController animated:YES completion:nil];
+    
+    self.loginViewController = nil;
+    
+//    [UIView animateWithDuration:0.3
+//                     animations:^{
+//                         self.loginViewController.view.alpha = 0;
+//                     }
+//                     completion:^(BOOL finished){
+//                         
+//                     }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

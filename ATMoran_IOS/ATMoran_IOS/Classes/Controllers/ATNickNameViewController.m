@@ -7,6 +7,12 @@
 //
 
 #import "ATNickNameViewController.h"
+#import "ATRenameRequest.h"
+#import "ATGlobal.h"
+@interface ATNickNameViewController () <ATRenameRequestDelegate>
+
+
+@end
 
 @implementation ATNickNameViewController
 
@@ -14,25 +20,32 @@
 {
     [super viewDidLoad];
     
-    if (self.navigationController) {
-        
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-                                                                       style:UIBarButtonItemStylePlain
-                                                                      target:self
-                                                                      action:@selector(backButtonClicked:)];
-        
-        backButton.tintColor = [UIColor whiteColor];
-        self.navigationItem.leftBarButtonItem = backButton;
-
-    }
-    
+    self.nickNameTextField.text =  self.nickName;
     
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
 
-- (void)backButtonClicked:(UIBarButtonItem *)button
+
+
+- (IBAction)DoneButtonClicked:(id)sender
 {
+    ATRenameRequest *reNameRequest=[[ATRenameRequest alloc]init];
+    [reNameRequest sendReNameRequestWithName:self.nickNameTextField.text delegate:self];
+}
+
+-(void) renameRequestSuccess:(ATRenameRequest *)request{
+    [ATGlobal shareGloabl].user.username = self.nickNameTextField.text;
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (void)renameRequestfail:(ATRenameRequest *)request error:(NSError *)error{
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 @end

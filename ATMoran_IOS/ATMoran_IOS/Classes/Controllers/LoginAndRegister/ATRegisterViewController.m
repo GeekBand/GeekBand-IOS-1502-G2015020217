@@ -40,7 +40,7 @@
 - (IBAction)registerButtonClicked:(id)sender {
 
     if ([self validateEmail:self.emailTextField.text] &&
-        [self validatePassword:self.passwordTextField.text] &&
+        [self validatePassword:self.passwordTextField.text ] &&
         [self passwordMatch]) {
         
         NSString *account = self.accountTextField.text;
@@ -57,9 +57,23 @@
         
         
     }else {
-        [self shakeView:self.incorrectEmailLabel];
-        [self shakeView:self.incorrectPasswordLabel];
-        [self shakeView:self.passwordUnmatchLabel];
+        
+        if (![self validateEmail:self.emailTextField.text]) {
+            self.incorrectEmailLabel.hidden = NO;
+            [self shakeView:self.incorrectEmailLabel];
+        }
+        if (![self validatePassword:self.passwordTextField.text]) {
+            self.incorrectPasswordLabel.hidden = NO;
+            [self shakeView:self.incorrectPasswordLabel];
+        }
+        if (![self passwordMatch]) {
+            self.passwordUnmatchLabel.hidden = NO;
+            [self shakeView:self.passwordUnmatchLabel];
+        }
+        if (![self validateAccount:self.accountTextField.text]) {
+            
+        }
+        
     }
  
 }
@@ -192,6 +206,14 @@
 
 - (BOOL)passwordMatch {
     if ([self.passwordTextField.text isEqualToString:self.comfirmpasswordTextField.text]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (BOOL)validateAccount:(NSString *)account
+{
+    if ([account length] != 0) {
         return YES;
     }
     return NO;

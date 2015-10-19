@@ -35,6 +35,11 @@
                 user.token = token;
             }
             
+            id userName = [data valueForKey:@"user_name"];
+            if ([[userName class] isSubclassOfClass:[NSString class]]) {
+                user.username = userName;
+            }
+            
         }
         
         

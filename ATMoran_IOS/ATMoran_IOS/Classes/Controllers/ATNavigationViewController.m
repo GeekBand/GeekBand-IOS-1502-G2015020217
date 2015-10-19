@@ -23,9 +23,6 @@
     self.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:UIColorFromRGB(0xffffff)};
     
     
-    NSLog(@"navigation itself:%@",self);
-    NSLog(@"self.navigationItem:%@",self.navigationItem);
-    
 }
 
 @end

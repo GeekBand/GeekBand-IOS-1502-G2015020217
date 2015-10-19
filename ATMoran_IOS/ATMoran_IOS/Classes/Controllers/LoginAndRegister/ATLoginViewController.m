@@ -7,8 +7,12 @@
 //
 
 #define yShiftpasswordTextField 30
+
 #import "ATLoginViewController.h"
 #import "ATLoginRequires.h"
+#import "AppDelegate.h"
+#import "ATGlobal.h"
+#import "ATGetHeadImageRequest.h"
 
 @interface ATLoginViewController ()<UITextFieldDelegate,ATLoginRequiresDelegate>
 {
@@ -139,7 +143,20 @@
 - (void)loginRequiresSuccess:(ATLoginRequires *)requires user:(ATUserModel *)user
 {
     if ([user.loginReturnMessage isEqualToString:@"Login success"]) {
-
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate loadMainViewWithController:self];
+        
+        
+        [ATGlobal shareGloabl].user = user;
+        [ATGlobal shareGloabl].user.email= self.emailTextField.text;
+        
+        ATGetHeadImageRequest *getImageRequest=[[ATGetHeadImageRequest alloc]init];
+        [getImageRequest sendGetImageRequest];
+        
+    }else {
+        
+        
+        
     }
 }
 

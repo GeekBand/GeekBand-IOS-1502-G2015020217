@@ -12,6 +12,8 @@
 
 
 @property (weak, nonatomic) IBOutlet UIButton *headImageButton;
+@property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
 
 
 @end

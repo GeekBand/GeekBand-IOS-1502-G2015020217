@@ -39,7 +39,15 @@
 		E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */; settings = {ASSET_TAGS = (); }; };
 		E441CDBC1BCE368C007702E7 /* ATRegisterRequires.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */; settings = {ASSET_TAGS = (); }; };
 		E441CDC21BCE3832007702E7 /* ATRegisterRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */; settings = {ASSET_TAGS = (); }; };
+		E458B8CA1BD3D69300379C52 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E458B8C91BD3D69300379C52 /* KxMenu.m */; settings = {ASSET_TAGS = (); }; };
 		E46063391BCF8BFD00CA6F20 /* ATNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46063381BCF8BFD00CA6F20 /* ATNavigationViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B121BD46E13008F8793 /* ATSquareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B111BD46E13008F8793 /* ATSquareTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B151BD46FE7008F8793 /* ATSquareCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B141BD46FE7008F8793 /* ATSquareCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B181BD4782C008F8793 /* ATPhotoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B171BD4782C008F8793 /* ATPhotoDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B1B1BD47E3C008F8793 /* ATReleasePhtopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B1A1BD47E3C008F8793 /* ATReleasePhtopViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B1F1BD48A73008F8793 /* ATSquareRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B1E1BD48A73008F8793 /* ATSquareRequest.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B221BD48AB1008F8793 /* ATSquareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B211BD48AB1008F8793 /* ATSquareModel.m */; settings = {ASSET_TAGS = (); }; };
+		E4634B251BD48C0C008F8793 /* ATSquareRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */; settings = {ASSET_TAGS = (); }; };
 		E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790031BCD2DC900C39944 /* ATLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790051BCD2DC900C39944 /* ATRegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
 		E484161F1BCCCC02008FC68E /* ATMoran_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */; };
@@ -52,6 +60,11 @@
 		E48416581BCCDDC9008FC68E /* ATLoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E4D3AF961BD0FF8D0007D6CD /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E4D3AF931BD0FF8D0007D6CD /* SVProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
 		E4D3AF971BD0FF8D0007D6CD /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D3AF951BD0FF8D0007D6CD /* SVProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		E4DE55CA1BD1F1FE0039E2DB /* ATGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55C91BD1F1FE0039E2DB /* ATGlobal.m */; settings = {ASSET_TAGS = (); }; };
+		E4DE55CD1BD1F7960039E2DB /* ATHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55CC1BD1F7960039E2DB /* ATHomePageViewController.m */; settings = {ASSET_TAGS = (); }; };
+		E4DE55D01BD1F9BB0039E2DB /* ATGetHeadImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55CF1BD1F9BB0039E2DB /* ATGetHeadImageRequest.m */; settings = {ASSET_TAGS = (); }; };
+		E4DE55D51BD1FE060039E2DB /* ATRenameRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55D41BD1FE060039E2DB /* ATRenameRequest.m */; settings = {ASSET_TAGS = (); }; };
+		E4DE55D81BD1FFFD0039E2DB /* ATReImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55D71BD1FFFD0039E2DB /* ATReImageRequest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,9 +148,25 @@
 		E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequires.m; sourceTree = "<group>"; };
 		E441CDC01BCE3832007702E7 /* ATRegisterRequireParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterRequireParser.h; sourceTree = "<group>"; };
 		E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequireParser.m; sourceTree = "<group>"; };
+		E458B8C81BD3D69300379C52 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
+		E458B8C91BD3D69300379C52 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		E46063361BCF07D900CA6F20 /* GlobalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalTool.h; sourceTree = "<group>"; };
 		E46063371BCF8BFD00CA6F20 /* ATNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATNavigationViewController.h; sourceTree = "<group>"; };
 		E46063381BCF8BFD00CA6F20 /* ATNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATNavigationViewController.m; sourceTree = "<group>"; };
+		E4634B101BD46E13008F8793 /* ATSquareTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSquareTableViewCell.h; sourceTree = "<group>"; };
+		E4634B111BD46E13008F8793 /* ATSquareTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSquareTableViewCell.m; sourceTree = "<group>"; };
+		E4634B131BD46FE7008F8793 /* ATSquareCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSquareCollectionViewCell.h; sourceTree = "<group>"; };
+		E4634B141BD46FE7008F8793 /* ATSquareCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSquareCollectionViewCell.m; sourceTree = "<group>"; };
+		E4634B161BD4782C008F8793 /* ATPhotoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPhotoDetailViewController.h; sourceTree = "<group>"; };
+		E4634B171BD4782C008F8793 /* ATPhotoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPhotoDetailViewController.m; sourceTree = "<group>"; };
+		E4634B191BD47E3C008F8793 /* ATReleasePhtopViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATReleasePhtopViewController.h; sourceTree = "<group>"; };
+		E4634B1A1BD47E3C008F8793 /* ATReleasePhtopViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATReleasePhtopViewController.m; sourceTree = "<group>"; };
+		E4634B1D1BD48A73008F8793 /* ATSquareRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSquareRequest.h; sourceTree = "<group>"; };
+		E4634B1E1BD48A73008F8793 /* ATSquareRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSquareRequest.m; sourceTree = "<group>"; };
+		E4634B201BD48AB1008F8793 /* ATSquareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSquareModel.h; sourceTree = "<group>"; };
+		E4634B211BD48AB1008F8793 /* ATSquareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSquareModel.m; sourceTree = "<group>"; };
+		E4634B231BD48C0C008F8793 /* ATSquareRequestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATSquareRequestParser.h; sourceTree = "<group>"; };
+		E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATSquareRequestParser.m; sourceTree = "<group>"; };
 		E46790021BCD2DC900C39944 /* ATLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLoginViewController.h; sourceTree = "<group>"; };
 		E46790031BCD2DC900C39944 /* ATLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLoginViewController.m; sourceTree = "<group>"; };
 		E46790041BCD2DC900C39944 /* ATRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterViewController.h; sourceTree = "<group>"; };
@@ -160,6 +189,16 @@
 		E4D3AF931BD0FF8D0007D6CD /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		E4D3AF941BD0FF8D0007D6CD /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		E4D3AF951BD0FF8D0007D6CD /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		E4DE55C81BD1F1FE0039E2DB /* ATGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATGlobal.h; sourceTree = "<group>"; };
+		E4DE55C91BD1F1FE0039E2DB /* ATGlobal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATGlobal.m; sourceTree = "<group>"; };
+		E4DE55CB1BD1F7960039E2DB /* ATHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATHomePageViewController.h; sourceTree = "<group>"; };
+		E4DE55CC1BD1F7960039E2DB /* ATHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATHomePageViewController.m; sourceTree = "<group>"; };
+		E4DE55CE1BD1F9BB0039E2DB /* ATGetHeadImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATGetHeadImageRequest.h; sourceTree = "<group>"; };
+		E4DE55CF1BD1F9BB0039E2DB /* ATGetHeadImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATGetHeadImageRequest.m; sourceTree = "<group>"; };
+		E4DE55D31BD1FE060039E2DB /* ATRenameRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRenameRequest.h; sourceTree = "<group>"; };
+		E4DE55D41BD1FE060039E2DB /* ATRenameRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRenameRequest.m; sourceTree = "<group>"; };
+		E4DE55D61BD1FFFD0039E2DB /* ATReImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATReImageRequest.h; sourceTree = "<group>"; };
+		E4DE55D71BD1FFFD0039E2DB /* ATReImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATReImageRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +235,8 @@
 				E4370C5F1BD01F480099A880 /* ATNickNameViewController.m */,
 				E4370C611BD032550099A880 /* ATHeadImageViewController.h */,
 				E4370C621BD032550099A880 /* ATHeadImageViewController.m */,
+				E4DE55CB1BD1F7960039E2DB /* ATHomePageViewController.h */,
+				E4DE55CC1BD1F7960039E2DB /* ATHomePageViewController.m */,
 			);
 			name = My;
 			sourceTree = "<group>";
@@ -205,6 +246,10 @@
 			children = (
 				E43890081BCE8BAC003AD589 /* ATSquareViewController.h */,
 				E43890091BCE8BAC003AD589 /* ATSquareViewController.m */,
+				E4634B161BD4782C008F8793 /* ATPhotoDetailViewController.h */,
+				E4634B171BD4782C008F8793 /* ATPhotoDetailViewController.m */,
+				E4634B191BD47E3C008F8793 /* ATReleasePhtopViewController.h */,
+				E4634B1A1BD47E3C008F8793 /* ATReleasePhtopViewController.m */,
 			);
 			name = Square;
 			sourceTree = "<group>";
@@ -300,6 +345,15 @@
 				E43884641BD13D3A00A20D36 /* MJRefreshStateHeader.m */,
 			);
 			path = Header;
+			sourceTree = "<group>";
+		};
+		E4634B1C1BD48A51008F8793 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+				E4634B1D1BD48A73008F8793 /* ATSquareRequest.h */,
+				E4634B1E1BD48A73008F8793 /* ATSquareRequest.m */,
+			);
+			name = Square;
 			sourceTree = "<group>";
 		};
 		E46790011BCD2DC900C39944 /* LoginAndRegister */ = {
@@ -404,6 +458,8 @@
 			isa = PBXGroup;
 			children = (
 				E46063361BCF07D900CA6F20 /* GlobalTool.h */,
+				E4DE55C81BD1F1FE0039E2DB /* ATGlobal.h */,
+				E4DE55C91BD1F1FE0039E2DB /* ATGlobal.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -413,6 +469,8 @@
 			children = (
 				E441CDB41BCE2665007702E7 /* ATUserModel.h */,
 				E441CDB51BCE2665007702E7 /* ATUserModel.m */,
+				E4634B201BD48AB1008F8793 /* ATSquareModel.h */,
+				E4634B211BD48AB1008F8793 /* ATSquareModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -422,6 +480,10 @@
 			children = (
 				E48416571BCCDDC9008FC68E /* ATLoginAndRegister.storyboard */,
 				E43890031BCE896B003AD589 /* Main.storyboard */,
+				E4634B101BD46E13008F8793 /* ATSquareTableViewCell.h */,
+				E4634B111BD46E13008F8793 /* ATSquareTableViewCell.m */,
+				E4634B131BD46FE7008F8793 /* ATSquareCollectionViewCell.h */,
+				E4634B141BD46FE7008F8793 /* ATSquareCollectionViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -448,6 +510,8 @@
 		E484164E1BCCDC76008FC68E /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E458B8C81BD3D69300379C52 /* KxMenu.h */,
+				E458B8C91BD3D69300379C52 /* KxMenu.m */,
 				E43884421BD13D3A00A20D36 /* MJRefresh */,
 				E4D3AF921BD0FF8D0007D6CD /* SVProgressHUD */,
 			);
@@ -473,6 +537,8 @@
 				E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */,
 				E441CDC01BCE3832007702E7 /* ATRegisterRequireParser.h */,
 				E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */,
+				E4634B231BD48C0C008F8793 /* ATSquareRequestParser.h */,
+				E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -480,10 +546,9 @@
 		E48416511BCCDC76008FC68E /* Requires */ = {
 			isa = PBXGroup;
 			children = (
-				E441CDAE1BCE25C1007702E7 /* ATLoginRequires.h */,
-				E441CDAF1BCE25C1007702E7 /* ATLoginRequires.m */,
-				E441CDBA1BCE368C007702E7 /* ATRegisterRequires.h */,
-				E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */,
+				E4634B1C1BD48A51008F8793 /* Square */,
+				E4DE55D21BD1FDE10039E2DB /* Login&Register */,
+				E4DE55D11BD1FDD80039E2DB /* My */,
 			);
 			path = Requires;
 			sourceTree = "<group>";
@@ -505,6 +570,30 @@
 				E4D3AF951BD0FF8D0007D6CD /* SVProgressHUD.m */,
 			);
 			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
+		E4DE55D11BD1FDD80039E2DB /* My */ = {
+			isa = PBXGroup;
+			children = (
+				E4DE55D31BD1FE060039E2DB /* ATRenameRequest.h */,
+				E4DE55D41BD1FE060039E2DB /* ATRenameRequest.m */,
+				E4DE55D61BD1FFFD0039E2DB /* ATReImageRequest.h */,
+				E4DE55D71BD1FFFD0039E2DB /* ATReImageRequest.m */,
+			);
+			name = My;
+			sourceTree = "<group>";
+		};
+		E4DE55D21BD1FDE10039E2DB /* Login&Register */ = {
+			isa = PBXGroup;
+			children = (
+				E441CDAE1BCE25C1007702E7 /* ATLoginRequires.h */,
+				E441CDAF1BCE25C1007702E7 /* ATLoginRequires.m */,
+				E441CDBA1BCE368C007702E7 /* ATRegisterRequires.h */,
+				E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */,
+				E4DE55CE1BD1F9BB0039E2DB /* ATGetHeadImageRequest.h */,
+				E4DE55CF1BD1F9BB0039E2DB /* ATGetHeadImageRequest.m */,
+			);
+			name = "Login&Register";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -649,34 +738,47 @@
 				E43884791BD13D3A00A20D36 /* MJRefreshBackStateFooter.m in Sources */,
 				E441CDB31BCE25FD007702E7 /* BLMultipartForm.m in Sources */,
 				E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */,
+				E4634B181BD4782C008F8793 /* ATPhotoDetailViewController.m in Sources */,
+				E4DE55CA1BD1F1FE0039E2DB /* ATGlobal.m in Sources */,
 				E438847E1BD13D3A00A20D36 /* MJRefreshConst.m in Sources */,
 				E441CDBC1BCE368C007702E7 /* ATRegisterRequires.m in Sources */,
 				E484164B1BCCD2CC008FC68E /* main.m in Sources */,
+				E4634B1F1BD48A73008F8793 /* ATSquareRequest.m in Sources */,
+				E4DE55D01BD1F9BB0039E2DB /* ATGetHeadImageRequest.m in Sources */,
+				E4634B121BD46E13008F8793 /* ATSquareTableViewCell.m in Sources */,
 				E43884741BD13D3A00A20D36 /* MJRefreshAutoGifFooter.m in Sources */,
 				E43884761BD13D3A00A20D36 /* MJRefreshAutoStateFooter.m in Sources */,
 				E43890101BCE8CEA003AD589 /* ATTabBarViewController.m in Sources */,
 				E4D3AF971BD0FF8D0007D6CD /* SVProgressHUD.m in Sources */,
 				E438846F1BD13D3A00A20D36 /* MJRefreshAutoFooter.m in Sources */,
 				E441CDB61BCE2665007702E7 /* ATUserModel.m in Sources */,
+				E4634B151BD46FE7008F8793 /* ATSquareCollectionViewCell.m in Sources */,
 				E43884771BD13D3A00A20D36 /* MJRefreshBackGifFooter.m in Sources */,
 				E43884801BD13D3A00A20D36 /* UIScrollView+MJRefresh.m in Sources */,
 				E43884731BD13D3A00A20D36 /* MJRefreshHeader.m in Sources */,
+				E4DE55D81BD1FFFD0039E2DB /* ATReImageRequest.m in Sources */,
 				E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */,
 				E438847F1BD13D3A00A20D36 /* UIScrollView+MJExtension.m in Sources */,
+				E458B8CA1BD3D69300379C52 /* KxMenu.m in Sources */,
 				E438847A1BD13D3A00A20D36 /* MJRefreshGifHeader.m in Sources */,
 				E43884711BD13D3A00A20D36 /* MJRefreshComponent.m in Sources */,
 				E438900A1BCE8BAC003AD589 /* ATSquareViewController.m in Sources */,
+				E4634B221BD48AB1008F8793 /* ATSquareModel.m in Sources */,
 				E43884751BD13D3A00A20D36 /* MJRefreshAutoNormalFooter.m in Sources */,
 				E441CDB01BCE25C1007702E7 /* ATLoginRequires.m in Sources */,
 				E46063391BCF8BFD00CA6F20 /* ATNavigationViewController.m in Sources */,
+				E4634B251BD48C0C008F8793 /* ATSquareRequestParser.m in Sources */,
+				E4DE55CD1BD1F7960039E2DB /* ATHomePageViewController.m in Sources */,
 				E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */,
 				E441CDC21BCE3832007702E7 /* ATRegisterRequireParser.m in Sources */,
 				E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */,
+				E4DE55D51BD1FE060039E2DB /* ATRenameRequest.m in Sources */,
 				E43884811BD13D3A00A20D36 /* UIView+MJExtension.m in Sources */,
 				E438847B1BD13D3A00A20D36 /* MJRefreshNormalHeader.m in Sources */,
 				E4388FE71BCE51C0003AD589 /* ATMyTableViewController.m in Sources */,
 				E43884701BD13D3A00A20D36 /* MJRefreshBackFooter.m in Sources */,
 				E4370C601BD01F480099A880 /* ATNickNameViewController.m in Sources */,
+				E4634B1B1BD47E3C008F8793 /* ATReleasePhtopViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

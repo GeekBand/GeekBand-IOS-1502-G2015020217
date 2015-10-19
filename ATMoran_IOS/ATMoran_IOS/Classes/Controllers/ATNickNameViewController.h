@@ -10,4 +10,9 @@
 
 @interface ATNickNameViewController : ATBaseViewController
 
+@property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
+@property (nonatomic, weak) NSString *nickName;
+
+- (IBAction)DoneButtonClicked:(id)sender;
+
 @end
