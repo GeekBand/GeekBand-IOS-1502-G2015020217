@@ -16,6 +16,11 @@
 #import "ATSquareModel.h"
 #import "ATSquareTableViewCell.h"
 
+#define VCFromSB(SB,ID) [[UIStoryboard storyboardWithName:SB bundle:nil] instantiateViewControllerWithIdentifier:ID]
+
+#import "ATPhotoDetailViewController.h"
+#import "UIImageView+WebCache.h"
+
 @interface ATSquareViewController () <UITableViewDataSource,UITableViewDelegate,ATSquareRequestDelegate>
 
 @property (nonatomic, strong) NSArray *scrollArray;
@@ -28,20 +33,25 @@
 
 @property (nonatomic, strong) UIButton *titleButton;
 
+@property (nonatomic, strong) NSMutableArray *addrArray;
+@property (nonatomic, strong) NSMutableArray *pictureArray;
+
 @end
 
 @implementation ATSquareViewController
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeLocationValue:) name:@"observeLocationValue" object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeLocationValue:) name:@"observeLocationValue" object:nil];
   
+    
+    
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
     self.titleButton.frame = CGRectMake(0, 0, 200, 35);
@@ -52,13 +62,14 @@
     self.navigationItem.titleView = self.titleButton;
     
     
-//    [self requestAllData];
+    [self requestAllData];
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
 //         模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
         [self.tableView.header endRefreshing];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // 结束刷新
+            [self.tableView reloadData];
             [self.tableView.header endRefreshing];
             
         });
@@ -77,6 +88,16 @@
     }];
     
 }
+
+- (void)toCheckPicture
+{
+    ATPhotoDetailViewController *detailVC = VCFromSB(@"Main", @"ATPhotoDetailViewController");
+    [detailVC.PhotoImage sd_setImageWithURL:[NSURL URLWithString:_pic_url]];
+    detailVC.pic_id=_pic_id;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+}
+
 
 - (void)titleButtonClick:(UIButton *)button
 {
@@ -115,11 +136,15 @@
     
 }
 
-- (void)observeLocationValue:(NSNotification *)noti
+- (NSMutableArray *)data
 {
-//    self.locationDic = (NSMutableDictionary *)noti.userInfo;
-    
+    if (!_data) {
+        self.data = [NSMutableArray array];
+    }
+    return _data;
 }
+
+
 
 - (void)request500metersData
 {
@@ -127,8 +152,8 @@
 }
 - (void)request1000metersData
 {
-    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
-    [squareRequest sendSquareRequestWithParameter:nil delegate:self];
+//    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
+//    [squareRequest sendSquareRequestWithParameter:nil delegate:self];
     
 }
 - (void)request1500metersData
@@ -138,10 +163,21 @@
 
 - (void)requestAllData
 {
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId, @"token":[ATGlobal shareGloabl].user.token, @"longitude":@"121.47794", @"latitude":@"31.22516", @"distance":@"1000"};
+    
+    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
+    [squareRequest sendSquareRequestWithParameter:paramDic delegate:self];
+}
+
+- (void)squareRequestSuccess:(ATSquareRequest *)request dictionary:(NSDictionary *)dictionary
+{
+    self.addrArray = [NSMutableArray arrayWithArray:[dictionary allKeys]];
+    //    self.pictureArray = [NSMutableArray arrayWithArray:dictionary[@"pic"]];
+    self.dataDic = dictionary;
+    [self.tableView reloadData];
     
     
 }
-
 - (void)squareRequestSuccess:(ATSquareRequest *)request squareModel:(ATSquareModel *)squareModel
 {
     
@@ -151,27 +187,32 @@
     
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-//    return self.dataArr.count;
-    return 2;
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 5;
+    NSLog(@"addrArray: %zd", self.addrArray.count);
+    return self.addrArray.count;
+    
 }
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *str = @"ATSquareTableViewCell";
-    ATSquareTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:str];
-    if (!cell) {
-        cell = [[ATSquareTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:str];
-    }
-    cell.backgroundColor = [UIColor yellowColor];
+//    static NSString *str = @"ATSquareTableViewCell";
     
+    ATSquareTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"ATSquareTableViewCell"];
+    if (!cell) {
+        cell = [[ATSquareTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ATSquareTableViewCell"];
+    }
+    
+    ATSquareModel *squareModel = self.addrArray[indexPath.row][0];
+    cell.squareVC = self;
+    
+    cell.addressLabel.text = squareModel.addr;
+    cell.dataArr = self.dataDic[self.addrArray[indexPath.row]];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    [cell.commentCollectionView reloadData];
     return cell;
 }
 

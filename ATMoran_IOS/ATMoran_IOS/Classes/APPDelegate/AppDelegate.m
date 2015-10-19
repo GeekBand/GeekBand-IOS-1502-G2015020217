@@ -22,10 +22,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
 
-//    [self loadLoginView];
+    [self loadLoginView];
  
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+//    self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
     
     
     return YES;

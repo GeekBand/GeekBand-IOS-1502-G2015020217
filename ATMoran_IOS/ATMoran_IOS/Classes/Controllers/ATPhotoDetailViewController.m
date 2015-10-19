@@ -7,8 +7,10 @@
 //
 
 #import "ATPhotoDetailViewController.h"
-
-@interface ATPhotoDetailViewController ()
+#import "ATGlobal.h"
+#import "SVProgressHUD.h"
+#import "ATPhotoDetailRequest.h"
+@interface ATPhotoDetailViewController () <ATPhotoDetailRequestDelegate>
 
 @end
 
@@ -16,7 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [SVProgressHUD show];
+    
+    NSString *token= [ATGlobal shareGloabl].user.token;
+    NSString *userId= [ATGlobal shareGloabl].user.userId;
+    NSDictionary *dic=@{@"pic_id":_pic_id,@"token":token,@"user_id":userId};
+    ATPhotoDetailRequest *request= [[ATPhotoDetailRequest alloc]init];
+    [request sendViewDetailRequestWithParameter:dic delegate:self];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +34,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)viewDetailRequestSuccess:(ATPhotoDetailRequest *)request data:(NSData *)data{
+    _PhotoImage.image=[[UIImage alloc]initWithData:data];
+    [SVProgressHUD dismiss];
 }
-*/
+- (void)viewDetailRequestFailed:(ATPhotoDetailRequest *)request error:(NSError *)error{
+    [SVProgressHUD dismiss];
+}
 
 @end

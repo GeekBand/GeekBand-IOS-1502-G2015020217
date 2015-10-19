@@ -8,7 +8,6 @@
 
 #import "ATSquareRequest.h"
 #import "ATSquareRequestParser.h"
-#import "ATGlobal.h"
 
 @implementation ATSquareRequest
 
@@ -18,16 +17,18 @@
     
     self.delegate = delegate;
     
-    NSString *urlString = @"http://moran.chinacloudapp.cn/moran/web/node/list";
+//    NSString *urlString = @"http://moran.chinacloudapp.cn/moran/web/node/list";
+//    
+//    //GET提交。参数user_id，token，longitude，latitude，distance。返回地理位置的列表，以及
+//    //各自的图片url列表。按距离排序。
+//    
+//    urlString = [NSString stringWithFormat:@"%@?user_id=%@", urlString,paramDic[@"user_id"]];
+//    urlString = [NSString stringWithFormat:@"%@&token=%@", urlString,paramDic[@"token"]];
+//    urlString = [NSString stringWithFormat:@"%@&longitude=%@", urlString,paramDic[@"longitude"]];
+//    urlString = [NSString stringWithFormat:@"%@&latitud=%@", urlString,paramDic[@"latitude"]];
+//    urlString = [NSString stringWithFormat:@"%@&distance=%@", urlString,paramDic[@"distance"]];
     
-    //GET提交。参数user_id，token，longitude，latitude，distance。返回地理位置的列表，以及
-    //各自的图片url列表。按距离排序。
-    
-    urlString = [NSString stringWithFormat:@"%@?user_id=%@", urlString,[ATGlobal shareGloabl].user.userId];
-    urlString = [NSString stringWithFormat:@"%@&token=%@", urlString,[ATGlobal shareGloabl].user.token];
-    urlString = [NSString stringWithFormat:@"%@&longitude=%@", urlString,@"121.47794"];
-    urlString = [NSString stringWithFormat:@"%@&latitud=%@", urlString,@"31.22516"];
-    urlString = [NSString stringWithFormat:@"%@&distance=%@", urlString,@"1000"];
+    NSString *urlString = [NSString stringWithFormat:@"http://moran.chinacloudapp.cn/moran/web/node/list?distance=%@&latitude=%@&longitude=%@&token=%@&user_id=%@", paramDic[@"distance"], paramDic[@"latitude"], paramDic[@"longitude"], paramDic[@"token"], paramDic[@"user_id"]];
     
     NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -62,15 +63,13 @@
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"Square receive data string:%@", string);
     
-    ATSquareModel *squareModel = nil;
     if (self.receivedData) {
         ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
-        squareModel = [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(squareRequestSuccess:dictionary:)]) {
+            [_delegate squareRequestSuccess:self dictionary:[parser parseJson:self.receivedData]];
+        }
     }
-    
-    if ([_delegate respondsToSelector:@selector(squareRequestSuccess:squareModel:)]) {
-        [_delegate squareRequestSuccess:self squareModel:squareModel];
-    }
+
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

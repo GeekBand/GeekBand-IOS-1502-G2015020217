@@ -9,7 +9,10 @@
 #import "ATTabBarViewController.h"
 #import "GlobalTool.h"
 
-@interface ATTabBarViewController ()
+
+@interface ATTabBarViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@property (nonatomic,strong)UIImagePickerController *pickerController;
 
 @end
 
@@ -95,6 +98,72 @@
                                               otherButtonTitles:@"拍照",@"从手机相册选择", nil];
     [sheet showInView:self.tabBarController.view];
 }
+
+#pragma mark ----UIActionSheet delegate method
+
+-(void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    self.pickerController = [[UIImagePickerController alloc]init];;
+    if (buttonIndex == 0) {
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+            self.pickerController.allowsEditing = YES;
+            self.pickerController.delegate = self;
+            [self presentViewController:self.pickerController animated:YES completion:nil];
+            
+        }else {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法获取照相机" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+    }else if(buttonIndex == 1){
+        self.pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        self.pickerController.delegate = self;
+        [self presentViewController:self.pickerController animated:YES completion:nil];
+    }
+    
+    
+}
+
+#pragma mark -----UIImagePickerController delegate method
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+//    UIImage *image = info[UIImagePickerControllerOriginalImage];
+//    CGSize imagesize = image.size;
+//    imagesize.height = 626;
+//    imagesize.width = 413;
+//    image = [self imageWithImage:image scaledToSize:imagesize];
+// 
+//    if (self.pickerController.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        GBMPublishViewController *pulish =  [story instantiateViewControllerWithIdentifier:@"CMJ"];
+//        pulish.tag = 2;
+//        pulish.publishPhoto = image;
+//        [picker pushViewController:pulish animated:YES];
+//    }else{
+//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        GBMPublishViewController *pulish =  [story instantiateViewControllerWithIdentifier:@"CMJ"];
+//        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:pulish];
+//        pulish.tag = 1;
+//        [picker presentViewController:navigationController animated:YES completion:nil];
+//    }
+//    
+//    
+//    
+    
+}
+
+
+//对图片尺寸进行压缩
+-(UIImage *)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize{
+    
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

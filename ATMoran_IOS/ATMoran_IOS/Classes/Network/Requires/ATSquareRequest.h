@@ -13,6 +13,8 @@
 
 @protocol ATSquareRequestDelegate <NSObject>
 
+- (void)squareRequestSuccess:(ATSquareRequest *)request dictionary:(NSDictionary *)dictionary;
+
 - (void)squareRequestSuccess:(ATSquareRequest *)request squareModel:(ATSquareModel *)squareModel;
 - (void)squareRequestFailed:(ATSquareRequest *)request error:(NSError *)error;
 
