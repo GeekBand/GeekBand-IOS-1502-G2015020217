@@ -16,13 +16,15 @@
 #import "ATSquareModel.h"
 #import "ATSquareTableViewCell.h"
 
-#define VCFromSB(SB,ID) [[UIStoryboard storyboardWithName:SB bundle:nil] instantiateViewControllerWithIdentifier:ID]
-
 #import "ATPhotoDetailViewController.h"
 #import "UIImageView+WebCache.h"
+#import "ATLocationManager.h"
+#import "SVProgressHUD.h"
 
-@interface ATSquareViewController () <UITableViewDataSource,UITableViewDelegate,ATSquareRequestDelegate>
-
+@interface ATSquareViewController () <UITableViewDataSource,UITableViewDelegate,ATSquareRequestDelegate,ATLocationManagerDelegate>
+{
+    BOOL updateLocationFinished;
+}
 @property (nonatomic, strong) NSArray *scrollArray;
 @property (nonatomic ,strong) NSMutableDictionary * userLocationDict;
 
@@ -40,17 +42,14 @@
 
 @implementation ATSquareViewController
 
-- (void)dealloc
-{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(observeLocationValue:) name:@"observeLocationValue" object:nil];
-  
-    
+
+    updateLocationFinished = NO;
+    [ATLocationManager sharedInstance].delegate = self;
+    [[ATLocationManager sharedInstance] updateLBS];
+    [SVProgressHUD showWithStatus:@"正在获取地理信息" maskType:SVProgressHUDMaskTypeClear];
     
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
@@ -61,18 +60,22 @@
     self.titleButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 40);
     self.navigationItem.titleView = self.titleButton;
     
-    
-    [self requestAllData];
-    
+    //下拉刷新
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//         模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        [self.tableView.header endRefreshing];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [self.tableView reloadData];
-            [self.tableView.header endRefreshing];
+        
+        if ([self.titleButton.titleLabel.text isEqualToString:@"全部"]) {
+            [self requestAllData];
             
-        });
+        }else if ([self.titleButton.titleLabel.text isEqualToString:@"附近500米"]) {
+            [self request500metersData];
+            
+        }else if ([self.titleButton.titleLabel.text isEqualToString:@"附近1000米"]) {
+            [self request1000metersData];
+            
+        }else if ([self.titleButton.titleLabel.text isEqualToString:@"附近1500米"]) {
+            [self request1500metersData];
+        }
+
     }];
     
     // 设置自动切换透明度(在导航栏下面自动隐藏)
@@ -80,18 +83,28 @@
     
     // 上拉刷新
     self.tableView.footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        // 模拟延迟加载数据，因此2秒后才调用（真实开发中，可以移除这段gcd代码）
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            // 结束刷新
-            [self.tableView.footer endRefreshing];
-        });
+        [self.tableView.footer endRefreshing];
+
     }];
     
 }
 
+- (void)updateLocationSuccess:(ATLocationManager *)manager
+{
+    
+    [SVProgressHUD dismiss];
+    [self requestAllData];
+}
+
+- (void)updateLocationFail:(ATLocationManager *)manager error:(NSError *)error
+{
+    [self requestAllData];
+    [SVProgressHUD showErrorWithStatus:@"获取地理信息失败"];
+}
+
 - (void)toCheckPicture
 {
-    ATPhotoDetailViewController *detailVC = VCFromSB(@"Main", @"ATPhotoDetailViewController");
+    ATPhotoDetailViewController *detailVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ATPhotoDetailViewController"];
     [detailVC.PhotoImage sd_setImageWithURL:[NSURL URLWithString:_pic_url]];
     detailVC.pic_id=_pic_id;
     [self.navigationController pushViewController:detailVC animated:YES];
@@ -103,7 +116,7 @@
 {
     NSArray *menuItems =
     @[
-      [KxMenuItem menuItem:@" 显示全部"
+      [KxMenuItem menuItem:@"显示全部"
                      image:nil
                     target:self
                     action:@selector(requestAllData)],
@@ -136,55 +149,76 @@
     
 }
 
-- (NSMutableArray *)data
-{
-    if (!_data) {
-        self.data = [NSMutableArray array];
-    }
-    return _data;
-}
-
-
-
 - (void)request500metersData
 {
+    [self.titleButton setTitle:@"附近500米" forState:UIControlStateNormal];
+    
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId,
+                               @"token":[ATGlobal shareGloabl].user.token,
+                               @"longitude":[ATLocationManager sharedInstance].longitude,
+                               @"latitude":[ATLocationManager sharedInstance].latitude,
+                               @"distance":@"500"};
+    
+    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
+    [squareRequest sendSquareRequestWithParameter:paramDic delegate:self];
     
 }
 - (void)request1000metersData
 {
-//    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
-//    [squareRequest sendSquareRequestWithParameter:nil delegate:self];
+    [self.titleButton setTitle:@"附近1000米" forState:UIControlStateNormal];
+    
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId,
+                               @"token":[ATGlobal shareGloabl].user.token,
+                               @"longitude":[ATLocationManager sharedInstance].longitude,
+                               @"latitude":[ATLocationManager sharedInstance].latitude,
+                               @"distance":@"1000"};
+    
+    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
+    [squareRequest sendSquareRequestWithParameter:paramDic delegate:self];
     
 }
 - (void)request1500metersData
 {
+    [self.titleButton setTitle:@"附近1500米" forState:UIControlStateNormal];
     
-}
-
-- (void)requestAllData
-{
-    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId, @"token":[ATGlobal shareGloabl].user.token, @"longitude":@"121.47794", @"latitude":@"31.22516", @"distance":@"1000"};
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId,
+                               @"token":[ATGlobal shareGloabl].user.token,
+                               @"longitude":[ATLocationManager sharedInstance].longitude,
+                               @"latitude":[ATLocationManager sharedInstance].latitude,
+                               @"distance":@"1500"};
     
     ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
     [squareRequest sendSquareRequestWithParameter:paramDic delegate:self];
 }
 
+- (void)requestAllData
+{
+    [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
+    
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId,
+                               @"token":[ATGlobal shareGloabl].user.token,
+                               @"longitude":@"121.47794",
+                               @"latitude":@"31.22516",
+                               @"distance":@"5000"};
+    
+    ATSquareRequest *squareRequest = [[ATSquareRequest alloc] init];
+    [squareRequest sendSquareRequestWithParameter:paramDic delegate:self];
+    
+}
+
 - (void)squareRequestSuccess:(ATSquareRequest *)request dictionary:(NSDictionary *)dictionary
 {
     self.addrArray = [NSMutableArray arrayWithArray:[dictionary allKeys]];
-    //    self.pictureArray = [NSMutableArray arrayWithArray:dictionary[@"pic"]];
     self.dataDic = dictionary;
+
     [self.tableView reloadData];
-    
-    
-}
-- (void)squareRequestSuccess:(ATSquareRequest *)request squareModel:(ATSquareModel *)squareModel
-{
+    [self.tableView.header endRefreshing];
     
 }
+
 - (void)squareRequestFailed:(ATSquareRequest *)request error:(NSError *)error
 {
-    
+    [self.tableView.header endRefreshing];
 }
 
 

@@ -17,6 +17,8 @@
 @interface ATLoginViewController ()<UITextFieldDelegate,ATLoginRequiresDelegate>
 {
     UITapGestureRecognizer *_tapGesture;
+    NSString *_myEmail;
+    NSString *_myPassword;
 }
 @end
 
@@ -28,7 +30,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self readInformation];
 
+    
     self.loginButton.layer.cornerRadius = 5.0f;
     self.loginButton.clipsToBounds = YES;
  
@@ -36,6 +40,35 @@
     [self.view addGestureRecognizer:_tapGesture];
     
 }
+
+// 读取本地化的数据
+-(void)readInformation{
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _myEmail = [defaults stringForKey:@"email"];
+    _myPassword = [defaults stringForKey:@"password"];
+    
+    if (_myEmail){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"是否使用本地邮箱密码"
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:@"确定", nil];
+        
+        [alert show];
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        self.emailTextField.text = _myEmail;
+        self.passwordTextField.text = _myPassword;
+    }
+}
+
+
 
 #pragma mark - ButtonClicked methods
 - (IBAction)loginButtonClicked:(id)sender {
@@ -152,6 +185,13 @@
         
         ATGetHeadImageRequest *getImageRequest=[[ATGetHeadImageRequest alloc]init];
         [getImageRequest sendGetImageRequest];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.emailTextField.text forKey:@"email"];
+        [defaults setObject:self.passwordTextField.text forKey:@"password"];
+        [defaults synchronize];
+        
+        
         
     }else {
         

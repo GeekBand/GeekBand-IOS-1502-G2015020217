@@ -25,12 +25,14 @@
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property(nonatomic, assign)id<ATPublishRequestDelegate> delegate;
 
-- (void)sendLoginRequestWithUserId:(NSString *)userId
-                             token:(NSString *)token
-                         longitude:(NSString *)longitude
-                          latitude:(NSString *)latitude
-                             title:(NSString *)title
-                              data:(NSData *)data
-                          delegate:(id<ATPublishRequestDelegate>)delegate;
+- (void)sendPublishRequestWithUserId:(NSString *)userId
+                               token:(NSString *)token
+                           longitude:(NSString *)longitude
+                            latitude:(NSString *)latitude
+                               title:(NSString *)title
+                           photoData:(NSData *)photoData
+                            location:(NSString *)location
+                                addr:(NSString *)addr
+                            delegate:(id<ATPublishRequestDelegate>)delegate;
 
 @end

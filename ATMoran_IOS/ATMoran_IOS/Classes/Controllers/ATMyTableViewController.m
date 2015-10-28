@@ -23,7 +23,8 @@
 {
     self.nickNameLabel.text = [ATGlobal shareGloabl].user.username;
     
-//    [self.headImageButton setBackgroundImage:[ATGlobal shareGloabl].user.image forState:UIControlStateNormal];
+    [self.headImageButton setBackgroundImage:[ATGlobal shareGloabl].user.image forState:UIControlStateNormal];
+    [self.headImageButton setImage:[ATGlobal shareGloabl].user.image forState:UIControlStateHighlighted];
     
     self.emailLabel.text = [ATGlobal shareGloabl].user.email;
     

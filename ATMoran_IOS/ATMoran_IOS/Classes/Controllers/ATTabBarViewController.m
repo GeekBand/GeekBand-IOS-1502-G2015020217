@@ -8,7 +8,7 @@
 
 #import "ATTabBarViewController.h"
 #import "GlobalTool.h"
-
+#import "ATPublishViewController.h"
 
 @interface ATTabBarViewController ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -92,7 +92,7 @@
 - (void)addOrderView
 {
     UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"取消"
                                          destructiveButtonTitle:nil
                                               otherButtonTitles:@"拍照",@"从手机相册选择", nil];
@@ -128,28 +128,27 @@
 #pragma mark -----UIImagePickerController delegate method
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-//    UIImage *image = info[UIImagePickerControllerOriginalImage];
-//    CGSize imagesize = image.size;
-//    imagesize.height = 626;
-//    imagesize.width = 413;
-//    image = [self imageWithImage:image scaledToSize:imagesize];
-// 
-//    if (self.pickerController.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
-//        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        GBMPublishViewController *pulish =  [story instantiateViewControllerWithIdentifier:@"CMJ"];
-//        pulish.tag = 2;
-//        pulish.publishPhoto = image;
-//        [picker pushViewController:pulish animated:YES];
-//    }else{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    CGSize imagesize = image.size;
+    imagesize.height = 626;
+    imagesize.width = 413;
+    image = [self imageWithImage:image scaledToSize:imagesize];
+ 
+    if (self.pickerController.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
+        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ATPublishViewController *pulish =  [story instantiateViewControllerWithIdentifier:@"ATPublishViewController"];
+        pulish.publishPhoto = image;
+        [picker pushViewController:pulish animated:YES];
+    }else{
 //        UIStoryboard *story = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //        GBMPublishViewController *pulish =  [story instantiateViewControllerWithIdentifier:@"CMJ"];
 //        UINavigationController *navigationController = [[UINavigationController alloc]initWithRootViewController:pulish];
 //        pulish.tag = 1;
 //        [picker presentViewController:navigationController animated:YES completion:nil];
-//    }
-//    
-//    
-//    
+    }
+    
+    
+    
     
 }
 

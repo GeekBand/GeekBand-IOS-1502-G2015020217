@@ -61,13 +61,17 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"Square receive data string:%@", string);
+//    NSLog(@"Square receive data string:%@", string);
     
+    
+    ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
+    NSDictionary *dic = nil;
     if (self.receivedData) {
-        ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
-        if ([_delegate respondsToSelector:@selector(squareRequestSuccess:dictionary:)]) {
-            [_delegate squareRequestSuccess:self dictionary:[parser parseJson:self.receivedData]];
-        }
+        dic = [parser parseJson:self.receivedData];
+    }
+    
+    if ([_delegate respondsToSelector:@selector(squareRequestSuccess:dictionary:)]) {
+        [_delegate squareRequestSuccess:self dictionary:dic];
     }
 
 }

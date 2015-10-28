@@ -48,7 +48,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    UIImage *image = [UIImage imageWithData:self.receivedData];
+    UIImage *image = [UIImage imageWithData:self.receivedData scale:0.1];
     
     [ATGlobal shareGloabl].user.image = image;
 }

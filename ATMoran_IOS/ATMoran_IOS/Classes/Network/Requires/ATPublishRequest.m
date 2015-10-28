@@ -17,7 +17,7 @@
 
 @implementation ATPublishRequest
 
--(void)sendLoginRequestWithUserId:(NSString *)userId token:(NSString *)token longitude:(NSString *)longitude latitude:(NSString *)latitude title:(NSString *)title data:(NSData *)data delegate:(id<ATPublishRequestDelegate>)delegate
+-(void)sendPublishRequestWithUserId:(NSString *)userId token:(NSString *)token longitude:(NSString *)longitude latitude:(NSString *)latitude title:(NSString *)title photoData:(NSData *)photoData location:(NSString *)location addr:(NSString *)addr delegate:(id<ATPublishRequestDelegate>)delegate
 {
     
     [self.urlConnection cancel];
@@ -36,14 +36,15 @@
     
     
     BLMultipartForm *form = [[BLMultipartForm alloc] init];
+    
     [form addValue:token forField:@"token"];
     [form addValue:userId forField:@"user_id"];
-    [form addValue:data forField:@"data"];
+    [form addValue:photoData forField:@"data"];
     [form addValue:title forField:@"title"];
-    [form addValue:@"" forField:@"location"];
+    [form addValue:location forField:@"location"];
     [form addValue:longitude forField:@"longitude"];
     [form addValue:latitude forField:@"latitude"];
-    
+    [form addValue:addr forField:@"addr"];
     
     request.HTTPBody = [form httpBody];
     [request setValue:form.contentType forHTTPHeaderField:@"Content-Type"];
@@ -75,13 +76,13 @@
 {
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"receive data string:%@", string);
+    
     ATPublishRequestParser *parser =[[ATPublishRequestParser alloc]init];
     ATPublishModel* model =  [parser parseJson:self.receivedData];
     if ([_delegate respondsToSelector:@selector(requestSuccess:picId:)]) {
         [_delegate requestSuccess:self picId:model.picId];
     }
-    //    [parser parseJson:self.receivedData];
-    
+   
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
