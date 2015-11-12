@@ -11,15 +11,14 @@
 @interface ATPublishViewController : ATBaseViewController
 
 @property (weak, nonatomic) IBOutlet UIImageView *pubilshImage;
-@property (weak, nonatomic) IBOutlet UIButton *locationButton;
+@property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UITextView *titleTextView;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
-
-- (IBAction)returnToCamera:(id)sender;
-- (IBAction)publishLocation:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UIScrollView *contentScrollView;
+@property (weak, nonatomic) IBOutlet UIScrollView *ScrollView;
 
 @property (strong , nonatomic)UIImage *publishPhoto;
+
+- (IBAction)repickPhotoButtonClicked:(id)sender;
+- (IBAction)locaionButtonClicked:(id)sender;
 
 @end

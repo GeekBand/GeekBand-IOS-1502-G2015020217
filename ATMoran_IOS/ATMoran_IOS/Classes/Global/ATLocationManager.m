@@ -32,8 +32,6 @@
     self = [super init];
     if (self) {
         _locationManager = [[CLLocationManager alloc] init];
-        self.longitude = @"";
-        self.latitude = @"";
     }
     return self;
 }
@@ -61,8 +59,9 @@
     
     NSLog(@"locationManagerFail:%@",error.description);
     
-    _longitude = @"";
-    _latitude = @"";
+    _longitude = nil;
+    _latitude = nil;
+    _location = nil;
     _currentLocation = nil;
     [_locationManager stopUpdatingLocation];
     
@@ -74,12 +73,26 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
     _currentLocation = locations.lastObject;
-    
     _longitude = [NSString stringWithFormat:@"%f",[locations lastObject].coordinate.longitude];
     _latitude = [NSString stringWithFormat:@"%f",[locations lastObject].coordinate.latitude];
-    
+
     NSLog(@"%@,%@",_longitude, _latitude);
     
+    CLGeocoder *revGeo = [[CLGeocoder alloc] init];
+    [revGeo reverseGeocodeLocation:_currentLocation
+     //反向地理编码
+                 completionHandler:^(NSArray *placemarks, NSError *error) {
+                     if (!error && [placemarks count] > 0)
+                     {
+                         NSDictionary *dict =
+                         [[placemarks objectAtIndex:0] addressDictionary]; NSLog(@"street address: %@",[dict objectForKey :@"Street"]);
+                         
+                         self.location = dict[@"Name"];
+                     }
+                     else
+                     {
+                         NSLog(@"ERROR: %@", error); }
+                 }];
     
     [_locationManager stopUpdatingLocation];
     

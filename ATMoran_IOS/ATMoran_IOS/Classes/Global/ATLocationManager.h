@@ -25,9 +25,8 @@
 
 @property (nonatomic, strong) NSString *longitude;
 @property (nonatomic, strong) NSString *latitude;
+@property (nonatomic, strong) NSString *location;
 @property (nonatomic, strong) CLLocation *currentLocation;
-
-@property (nonatomic, strong) NSString *address;
 
 @property (nonatomic,weak) id<ATLocationManagerDelegate> delegate;
 

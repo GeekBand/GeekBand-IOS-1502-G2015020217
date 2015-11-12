@@ -11,6 +11,7 @@
 #import "ATPublishRequestParser.h"
 #import "ATLocationManager.h"
 #import "ATGlobal.h"
+#import "SVProgressHUD.h"
 
 @interface ATPublishViewController () <ATLocationManagerDelegate,ATPublishRequestDelegate,UITextViewDelegate>
 {
@@ -21,6 +22,10 @@
 @end
 
 @implementation ATPublishViewController
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self makePublishButton];
+}
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -32,8 +37,6 @@
     
     self.pubilshImage.image= self.publishPhoto;
     
-    [self makePublishButton];
-    
     UIToolbar *topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [topView setBarStyle:UIBarStyleDefault];
     UIBarButtonItem *btnSapce = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
@@ -42,18 +45,23 @@
     [topView setItems:buttonArray];
     [self.titleTextView setInputAccessoryView:topView];
     
-    _updateLocationFinished = NO;
     [ATLocationManager sharedInstance].delegate = self;
-    [[ATLocationManager sharedInstance] updateLBS];
-
+    _updateLocationFinished = YES;
+    if (![ATLocationManager sharedInstance].location) {
+        _updateLocationFinished = NO;
+        [[ATLocationManager sharedInstance] updateLBS];
+        self.locationLabel.text = @"正在获取地理位置信息";
+        
+    }else{
+        self.locationLabel.text = [ATLocationManager sharedInstance].location;
+    }
 
 }
 
 -(void)makePublishButton{
     
-    _publishButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-65, 0, 50, 40)];
+    _publishButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-65, 0, 45, 30)];
     _publishButton.backgroundColor = [UIColor whiteColor];
-    _publishButton.alpha = 0.8;
     [_publishButton setTitle:@"发布" forState:UIControlStateNormal];
     [_publishButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [_publishButton addTarget:self action:@selector(publishPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -66,13 +74,13 @@
 
 
 #pragma mark - buttonClicked methods
-- (IBAction)publishLocation:(id)sender {
-    
+- (IBAction)locaionButtonClicked:(id)sender {
+    self.locationLabel.text = @"正在获取地理位置信息";
     _updateLocationFinished = NO;
     [[ATLocationManager sharedInstance] updateLBS];
 }
 
-- (IBAction)returnToCamera:(id)sender {
+- (IBAction)repickPhotoButtonClicked:(id)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
@@ -83,16 +91,14 @@
     if (_updateLocationFinished) {
         [self publishRequestHandler];
     }else {
-        //wait until location update complete
+        [SVProgressHUD showWithStatus:@"正在获取地理位置信息"];
     }
 }
 
 #pragma mark - textViewDelegate
 -(void)textViewDidBeginEditing:(UITextView *)textView
 {
-    [UIView animateWithDuration:0.35 animations:^{
-        self.contentScrollView.contentOffset = CGPointMake(0, 80);
-    }];
+    [self.ScrollView setContentOffset:CGPointMake(0, 110) animated:YES];
     
     if ([textView.text isEqualToString:@"你想说的话"]) {
         textView.text = @"";
@@ -103,13 +109,12 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    NSLog(@"%@",textView.text);
     NSInteger number = [textView.text length];
     if (number > 25) {
         textView.text = [textView.text substringToIndex:25];
         number = 25;
     }
-    self.numberLabel.text = [NSString stringWithFormat:@"%d/25",number];
+    self.numberLabel.text = [NSString stringWithFormat:@"%ld/25",(long)number];
 }
 
 -(void)textViewDidEndEditing:(UITextView *)textView
@@ -124,9 +129,7 @@
 - (void)resignKeyboardAndShiftBack
 {
     [self.titleTextView resignFirstResponder];
-    [UIView animateWithDuration:0.35 animations:^{
-        self.contentScrollView.contentOffset = CGPointMake(0, 0);
-    }];
+    [self.ScrollView setContentOffset:CGPointMake(0, -64) animated:YES];
 }
 
 #pragma mark - publish request delegate
@@ -159,13 +162,16 @@
 
 - (void)requestSuccess:(ATPublishRequest *)request picId:(NSString *)picId
 {
-   
+    [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 - (void)requestFailed:(ATPublishRequest *)request error:(NSError *)error
 {
-    NSLog(@"publishRequestFail:%@",error.description);
+    NSString *errorString = [NSString stringWithFormat:@"发布失败:%@",error];
+    [SVProgressHUD showErrorWithStatus:errorString];
+    NSLog(@"publishRequestFail:%@",error);
 
 }
 
@@ -173,13 +179,14 @@
 - (void)updateLocationSuccess:(ATLocationManager *)manager
 {
     _updateLocationFinished = YES;
-    self.locationButton.titleLabel.text = [ATLocationManager sharedInstance].address;
+    self.locationLabel.text = [ATLocationManager sharedInstance].location;
     
 }
 
 - (void)updateLocationFail:(ATLocationManager *)manager error:(NSError *)error
 {
     _updateLocationFinished = YES;
+    self.locationLabel.text = @"获取地理位置信息失败，点击重试";
 }
 
 

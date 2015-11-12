@@ -5,9 +5,6 @@
 //  Created by AntsTower on 15/10/13.
 //  Copyright © 2015年 Ants. All rights reserved.
 //
-
-#define yShiftpasswordTextField 30
-
 #import "ATLoginViewController.h"
 #import "ATLoginRequires.h"
 #import "AppDelegate.h"
@@ -16,33 +13,72 @@
 
 @interface ATLoginViewController ()<UITextFieldDelegate,ATLoginRequiresDelegate>
 {
-    UITapGestureRecognizer *_tapGesture;
     NSString *_myEmail;
     NSString *_myPassword;
+    
+    UITextField *_targetTextField;
 }
+
 @end
 
 @implementation ATLoginViewController
-- (void)dealloc
+
+- (void)viewDidAppear:(BOOL)animated
 {
-    [self.view removeGestureRecognizer:_tapGesture];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:)  name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:)  name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self readInformation];
-
     
+    [self readLocalInformation];
+
     self.loginButton.layer.cornerRadius = 5.0f;
     self.loginButton.clipsToBounds = YES;
  
-    _tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGestrue:)];
-    [self.view addGestureRecognizer:_tapGesture];
-    
+    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGestrue:)];
+    [self.view addGestureRecognizer:tapGesture];
+  
 }
 
-// 读取本地化的数据
--(void)readInformation{
+#pragma mark - keyboardNotification methods
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    if (_targetTextField) {
+        
+        NSDictionary *userInfoDic = notification.userInfo;
+        CGRect keyboardRect = [[userInfoDic valueForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+        CGFloat keyboardY = keyboardRect.origin.y;
+        CGFloat targetTextFieldY = _targetTextField.frame.origin.y + _targetTextField.frame.size.height;
+        CGFloat keyboardOffSet = targetTextFieldY - keyboardY;
+
+        if (keyboardOffSet > 0) {
+            [UIView animateWithDuration:0.25 animations:^{
+                [self.view setFrame:CGRectMake(0, -keyboardOffSet, self.view.frame.size.width, self.view.frame.size.height)];
+            }];
+        }
+        
+    }
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification
+{
+    if (self.view.frame.origin.y < 0 ) {
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        }];
+    }
+    _targetTextField = nil;
+}
+
+#pragma mark - readLocalInformation
+-(void)readLocalInformation{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     _myEmail = [defaults stringForKey:@"email"];
@@ -73,27 +109,17 @@
 #pragma mark - ButtonClicked methods
 - (IBAction)loginButtonClicked:(id)sender {
 
-    if ([self validateEmail:self.emailTextField.text] && [self validatePassword:self.passwordTextField.text]) {
+    if ([self emailOK] && [self passwordOK]) {
         
-        NSString *email = self.emailTextField.text;
-        NSString *password = self.passwordTextField.text;
-        NSString *gbid = @"GeekBand-I150001";
-        
-        
-        ATLoginRequires *loginRequest = [[ATLoginRequires alloc] init];
-        [loginRequest sendLoginRequestWithUserEmail:email
-                                           password:password
-                                               gbid:gbid
-                                           delegate:self];
-        
-        
+        [self loginRequiresHandler];
+       
     }else {
         
-        if (![self validateEmail:self.emailTextField.text]) {
+        if (![self emailOK]) {
             self.incorrectEmailLabel.hidden = NO;
             [self shakeView:self.incorrectEmailLabel];
         }
-        if (![self validatePassword:self.passwordTextField.text]) {
+        if (![self passwordOK]) {
             self.incorrectPasswordLabel.hidden = NO;
             [self shakeView:self.incorrectPasswordLabel];
         }
@@ -104,40 +130,6 @@
 }
 
 #pragma mark - TextFieldDelegate
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    if (textField == self.passwordTextField){
-        [UIView animateWithDuration:0.35 animations:^{
-            [self.contentScrollView setContentOffset:CGPointMake(0, yShiftpasswordTextField)];
-        }];
-    }
-    return YES;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    if (textField == self.emailTextField) {
-        
-        if ([self validateEmail:self.emailTextField.text]) {
-            self.incorrectEmailLabel.hidden = YES;
-            
-        }else {
-            self.incorrectEmailLabel.hidden = NO;
-        }
-        
-    }else if (textField == self.passwordTextField) {
-        
-        if ([self validatePassword:self.passwordTextField.text]) {
-            self.incorrectPasswordLabel.hidden = YES;
-        }else {
-            self.incorrectPasswordLabel.hidden = NO;
-        }
-        
-    }
-    return YES;
-}
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (textField == self.emailTextField) {
@@ -145,9 +137,38 @@
         
     }else {
         [textField resignFirstResponder];
-        [self contentScrollViewShiftRecover];
     }
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _targetTextField = textField;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+ 
+    if (textField == self.emailTextField) {
+        
+        if ([self emailOK]) {
+            self.incorrectEmailLabel.hidden = YES;
+        }else {
+            self.incorrectEmailLabel.hidden = NO;
+        }
+        
+    }
+    
+    else if (textField == self.passwordTextField) {
+        
+        if ([self passwordOK]) {
+            self.incorrectPasswordLabel.hidden = YES;
+        }else {
+            self.incorrectPasswordLabel.hidden = NO;
+        }
+        
+    }
+    
 }
 
 #pragma mark - Gestrue methods
@@ -155,24 +176,28 @@
 {
     if (gesture.state == UIGestureRecognizerStateEnded)
     {
-        if ([self.emailTextField isFirstResponder] || [self.passwordTextField isFirstResponder]) {
-            
-            [self.emailTextField resignFirstResponder];
-            [self.passwordTextField resignFirstResponder];
-            [self contentScrollViewShiftRecover];
-            
-        }
+        
+        [self.emailTextField resignFirstResponder];
+        [self.passwordTextField resignFirstResponder];
+        
     }
     
 }
 
-- (void)contentScrollViewShiftRecover{
-    [UIView animateWithDuration:0.35 animations:^{
-        [self.contentScrollView setContentOffset:CGPointMake(0, 0)];
-    }];
+#pragma mark - loginRequireDelegate
+- (void)loginRequiresHandler
+{
+    NSString *email = self.emailTextField.text;
+    NSString *password = self.passwordTextField.text;
+    NSString *gbid = @"GeekBand-I150001";
+    
+    ATLoginRequires *loginRequest = [[ATLoginRequires alloc] init];
+    [loginRequest sendLoginRequestWithUserEmail:email
+                                       password:password
+                                           gbid:gbid
+                                       delegate:self];
 }
 
-#pragma mark - loginRequireDelegate
 - (void)loginRequiresSuccess:(ATLoginRequires *)requires user:(ATUserModel *)user
 {
     if ([user.loginReturnMessage isEqualToString:@"Login success"]) {
@@ -190,14 +215,9 @@
         [defaults setObject:self.emailTextField.text forKey:@"email"];
         [defaults setObject:self.passwordTextField.text forKey:@"password"];
         [defaults synchronize];
-        
-        
-        
-    }else {
-        
-        
-        
+     
     }
+    
 }
 
 - (void)loginRequiresFailed:(ATLoginRequires *)requires error:(NSError *)error
@@ -205,20 +225,23 @@
     
 }
 
-#pragma mark - other
-- (BOOL)validateEmail:(NSString *)candidate {
+#pragma mark - checkInput
+- (BOOL)emailOK{
+    
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
-    return [emailTest evaluateWithObject:candidate];
+    return [emailTest evaluateWithObject:self.emailTextField.text];
 }
 
-- (BOOL)validatePassword:(NSString *)passwrod {
-    if ([passwrod length] >= 6 && [passwrod length] <= 20) {
-        return YES;
-    }
-    return NO;
+- (BOOL)passwordOK{
+    
+    NSString *passwordRegex = @"^[a-zA-Z0-9]{6,20}+$";
+    NSPredicate *passwordPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",passwordRegex];
+    return [passwordPredicate evaluateWithObject:self.passwordTextField.text];
+    
 }
 
+#pragma mark - other
 -(void)shakeView:(UIView*)viewToShake
 {
     CGFloat t =2.0;

@@ -36,9 +36,6 @@
     self.headImageButton.layer.cornerRadius = self.headImageButton.frame.size.width / 2.0;
     self.headImageButton.clipsToBounds = YES;
     
-    self.tableView.scrollEnabled = NO;
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
