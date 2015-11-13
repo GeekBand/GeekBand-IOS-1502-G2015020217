@@ -30,7 +30,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ATSquareCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ATSquareCollectionViewCell" forIndexPath:indexPath];
-    
     ATpictureModel *pictureModel = self.dataArr[indexPath.row];
     NSString *pic = pictureModel.pic_link;
     pic = [pic stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -42,7 +41,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"index.section = %zd, index.row = %zd",indexPath.section, indexPath.row);
     ATpictureModel *pictureModel = self.dataArr[indexPath.row];
     self.pic_url = pictureModel.pic_link;
     self.pic_id = pictureModel.pic_id;

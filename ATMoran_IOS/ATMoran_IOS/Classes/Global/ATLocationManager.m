@@ -58,9 +58,8 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
     NSLog(@"locationManagerFail:%@",error.description);
-    
-    _longitude = nil;
-    _latitude = nil;
+    _longitude = @"";
+    _latitude = @"";
     _location = nil;
     _currentLocation = nil;
     [_locationManager stopUpdatingLocation];

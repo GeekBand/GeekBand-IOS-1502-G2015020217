@@ -60,9 +60,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",string);
-    
     ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
     NSDictionary *dic = nil;
     if (self.receivedData) {

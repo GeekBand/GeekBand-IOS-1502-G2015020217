@@ -19,7 +19,7 @@
                                                    error:&error];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     if (error) {
-        NSLog(@"The parser is not work.");
+        NSLog(@"ATSquareRequestParser is not work.");
     } else {
         if ([[jsonDic class] isSubclassOfClass:[NSDictionary class]]) {
             
@@ -47,28 +47,6 @@
     }
     return dictionary;
 }
-//        ATSquareModel *squareModel = [[ATSquareModel alloc] init];
-//        if ([[jsonDic class] isSubclassOfClass:[NSDictionary class]]) {
-//            
-//            id data = [jsonDic valueForKey:@"data"];
-//            if ([[data class] isSubclassOfClass:[NSDictionary class]]) {
-//                
-//                id addr = [data valueForKey:@"addr"];
-//                if ([[addr class] isSubclassOfClass:[NSString class]]) {
-//                    squareModel.addr = addr;
-//                }
-//                
-//                id pic = [data valueForKey:@"pic"];
-//                if ([[addr class] isSubclassOfClass:[NSString class]]) {
-//                    squareModel.pic = pic;
-//                }
-//                
-//            }
-//            
-//            
-//            return squareModel;
-//        }
-    
 
 
 @end
