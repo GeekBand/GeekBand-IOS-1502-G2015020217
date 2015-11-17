@@ -49,10 +49,10 @@
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
     [self.titleButton.titleLabel setFont:[UIFont systemFontOfSize:19]];
-    self.titleButton.frame = CGRectMake(0, 0, 100, 35);
+    self.titleButton.frame = CGRectMake(0, 0, 150, 35);
     [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.titleButton setImage:[UIImage imageNamed:@"icon_arrow_down"] forState:UIControlStateNormal];
-    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 75, 0, 0);
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 90, 0, 0);
     self.titleButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     self.navigationItem.titleView = self.titleButton;
     
@@ -141,7 +141,7 @@
 - (void)request500metersData
 {
     [self.titleButton setTitle:@"附近500米" forState:UIControlStateNormal];
-    
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 125, 0, 0);
     NSString *distance = @"500";
     [self squareRequestHandlerWithinDistance:distance];
     
@@ -149,7 +149,7 @@
 - (void)request1000metersData
 {
     [self.titleButton setTitle:@"附近1000米" forState:UIControlStateNormal];
-    
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 125, 0, 0);
     NSString *distance = @"1000";
     [self squareRequestHandlerWithinDistance:distance];
     
@@ -157,7 +157,7 @@
 - (void)request1500metersData
 {
     [self.titleButton setTitle:@"附近1500米" forState:UIControlStateNormal];
-    
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 125, 0, 0);
     NSString *distance = @"1500";
     [self squareRequestHandlerWithinDistance:distance];
     
@@ -166,7 +166,7 @@
 - (void)requestAllData
 {
     [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
-
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 90, 0, 0);
     NSString *distance = @"5000";
     [self squareRequestHandlerWithinDistance:distance];
 
