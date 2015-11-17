@@ -11,8 +11,6 @@
 @interface ATSquareCollectionViewCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *commentImage;
-
 @property (weak, nonatomic) IBOutlet UILabel *commentLabel;
-
 
 @end

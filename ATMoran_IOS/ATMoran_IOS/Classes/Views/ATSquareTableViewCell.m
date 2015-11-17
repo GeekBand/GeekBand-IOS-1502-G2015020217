@@ -42,11 +42,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ATpictureModel *pictureModel = self.dataArr[indexPath.row];
-    self.pic_url = pictureModel.pic_link;
-    self.pic_id = pictureModel.pic_id;
-    self.squareVC.pic_url = self.pic_url;
-    self.squareVC.pic_id = self.pic_id;
-    [self.squareVC toCheckPicture];
+    [self.squareVC pictureSelectedWithPictureUrl:pictureModel.pic_link pictureId:pictureModel.pic_id];
 }
 
 @end

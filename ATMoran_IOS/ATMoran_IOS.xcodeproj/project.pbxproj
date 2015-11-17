@@ -29,8 +29,6 @@
 		E410BF301BD5180300935252 /* ATPublishRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF2F1BD5180300935252 /* ATPublishRequest.m */; };
 		E410BF331BD5185200935252 /* ATPublishRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF321BD5185200935252 /* ATPublishRequestParser.m */; };
 		E410BF361BD5188D00935252 /* ATPublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF351BD5188D00935252 /* ATPublishModel.m */; };
-		E410BF391BD5F79900935252 /* ATLocationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF381BD5F79900935252 /* ATLocationModel.m */; };
-		E410BF3C1BD5FEA500935252 /* ATLocationParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF3B1BD5FEA500935252 /* ATLocationParser.m */; };
 		E410BF3F1BD66C5000935252 /* ATLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E410BF3E1BD66C5000935252 /* ATLocationManager.m */; };
 		E4370C601BD01F480099A880 /* ATNickNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4370C5F1BD01F480099A880 /* ATNickNameViewController.m */; };
 		E4370C631BD032550099A880 /* ATHeadImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4370C621BD032550099A880 /* ATHeadImageViewController.m */; };
@@ -153,10 +151,6 @@
 		E410BF321BD5185200935252 /* ATPublishRequestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPublishRequestParser.m; sourceTree = "<group>"; };
 		E410BF341BD5188D00935252 /* ATPublishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPublishModel.h; sourceTree = "<group>"; };
 		E410BF351BD5188D00935252 /* ATPublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPublishModel.m; sourceTree = "<group>"; };
-		E410BF371BD5F79900935252 /* ATLocationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLocationModel.h; sourceTree = "<group>"; };
-		E410BF381BD5F79900935252 /* ATLocationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLocationModel.m; sourceTree = "<group>"; };
-		E410BF3A1BD5FEA500935252 /* ATLocationParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLocationParser.h; sourceTree = "<group>"; };
-		E410BF3B1BD5FEA500935252 /* ATLocationParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLocationParser.m; sourceTree = "<group>"; };
 		E410BF3D1BD66C5000935252 /* ATLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATLocationManager.h; sourceTree = "<group>"; };
 		E410BF3E1BD66C5000935252 /* ATLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATLocationManager.m; sourceTree = "<group>"; };
 		E4370C5E1BD01F480099A880 /* ATNickNameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATNickNameViewController.h; sourceTree = "<group>"; };
@@ -592,8 +586,6 @@
 				E410BEF11BD4ED5A00935252 /* ATpictureModel.m */,
 				E410BF341BD5188D00935252 /* ATPublishModel.h */,
 				E410BF351BD5188D00935252 /* ATPublishModel.m */,
-				E410BF371BD5F79900935252 /* ATLocationModel.h */,
-				E410BF381BD5F79900935252 /* ATLocationModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -664,8 +656,6 @@
 				E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */,
 				E410BF311BD5185200935252 /* ATPublishRequestParser.h */,
 				E410BF321BD5185200935252 /* ATPublishRequestParser.m */,
-				E410BF3A1BD5FEA500935252 /* ATLocationParser.h */,
-				E410BF3B1BD5FEA500935252 /* ATLocationParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -864,7 +854,6 @@
 				E410BF1B1BD4EF8E00935252 /* SDWebImageDownloaderOperation.m in Sources */,
 				E43884721BD13D3A00A20D36 /* MJRefreshFooter.m in Sources */,
 				E4370C631BD032550099A880 /* ATHeadImageViewController.m in Sources */,
-				E410BF3C1BD5FEA500935252 /* ATLocationParser.m in Sources */,
 				E43884791BD13D3A00A20D36 /* MJRefreshBackStateFooter.m in Sources */,
 				E441CDB31BCE25FD007702E7 /* BLMultipartForm.m in Sources */,
 				E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */,
@@ -887,7 +876,6 @@
 				E410BF201BD4EF8E00935252 /* UIImage+MultiFormat.m in Sources */,
 				E410BF1D1BD4EF8E00935252 /* SDWebImagePrefetcher.m in Sources */,
 				E410BF231BD4EF8E00935252 /* UIImageView+WebCache.m in Sources */,
-				E410BF391BD5F79900935252 /* ATLocationModel.m in Sources */,
 				E410BF3F1BD66C5000935252 /* ATLocationManager.m in Sources */,
 				E441CDB61BCE2665007702E7 /* ATUserModel.m in Sources */,
 				E410BF331BD5185200935252 /* ATPublishRequestParser.m in Sources */,

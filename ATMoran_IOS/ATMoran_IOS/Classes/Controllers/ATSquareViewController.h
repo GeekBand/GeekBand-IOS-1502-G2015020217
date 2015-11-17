@@ -12,10 +12,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, strong) NSString *pic_url;
-@property (nonatomic, strong) NSString *pic_id;
-@property (nonatomic, strong) NSMutableDictionary *locationDic;
-
-- (void)toCheckPicture;
+- (void)pictureSelectedWithPictureUrl:(NSString *)pic_url pictureId:(NSString *)pic_id;
 
 @end

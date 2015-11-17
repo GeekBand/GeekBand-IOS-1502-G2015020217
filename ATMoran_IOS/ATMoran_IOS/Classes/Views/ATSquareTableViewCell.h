@@ -17,8 +17,4 @@
 
 @property (nonatomic, strong) NSArray *dataArr;
 
-@property (nonatomic, strong) NSString *pic_url;
-@property (nonatomic, strong) NSString *pic_id;
-
-
 @end

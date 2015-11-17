@@ -5,13 +5,11 @@
 //  Created by AntsTower on 15/10/14.
 //  Copyright © 2015年 Ants. All rights reserved.
 //
-
 #import "ATSquareViewController.h"
 #import "KxMenu.h"
 #import "MJRefresh.h"
 #import "ATGlobal.h"
 #import "ATSquareRequest.h"
-#import "ATUserModel.h"
 #import "ATSquareModel.h"
 #import "ATSquareTableViewCell.h"
 #import "ATPhotoDetailViewController.h"
@@ -24,18 +22,10 @@
     BOOL      _updateLocationFinished;
     NSArray   *_menuItems;
 }
-@property (nonatomic, strong) NSArray *scrollArray;
-@property (nonatomic ,strong) NSMutableDictionary * userLocationDict;
-
-@property (strong, nonatomic) NSMutableArray *data; // Temp Refresh
 
 @property (nonatomic, strong) NSDictionary *dataDic;
-@property (nonatomic, strong) NSArray *dataArr;
-
-@property (nonatomic, strong) UIButton *titleButton;
-
 @property (nonatomic, strong) NSMutableArray *addrArray;
-@property (nonatomic, strong) NSMutableArray *pictureArray;
+@property (nonatomic, strong) UIButton *titleButton;
 
 @end
 
@@ -58,11 +48,12 @@
 {
     self.titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.titleButton setTitle:@"全部" forState:UIControlStateNormal];
-    self.titleButton.frame = CGRectMake(0, 0, 200, 35);
+    [self.titleButton.titleLabel setFont:[UIFont systemFontOfSize:19]];
+    self.titleButton.frame = CGRectMake(0, 0, 100, 35);
     [self.titleButton addTarget:self action:@selector(titleButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self.titleButton setImage:[UIImage imageNamed:@"icon_arrow_down"] forState:UIControlStateNormal];
-    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 133, 0, 0);
-    self.titleButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 40);
+    self.titleButton.imageEdgeInsets = UIEdgeInsetsMake(0, 75, 0, 0);
+    self.titleButton.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 20);
     self.navigationItem.titleView = self.titleButton;
     
     _menuItems =@[
@@ -130,13 +121,12 @@
 }
 
 #pragma mark - detailView
-- (void)toCheckPicture
+- (void)pictureSelectedWithPictureUrl:(NSString *)pic_url pictureId:(NSString *)pic_id
 {
     ATPhotoDetailViewController *detailVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ATPhotoDetailViewController"];
-    [detailVC.PhotoImage sd_setImageWithURL:[NSURL URLWithString:_pic_url]];
-    detailVC.pic_id=_pic_id;
+    [detailVC.PhotoImage sd_setImageWithURL:[NSURL URLWithString:pic_url]];
+    detailVC.pic_id=pic_id;
     [self.navigationController pushViewController:detailVC animated:YES];
-    
 }
 
 #pragma mark - titleButtonClicked
@@ -230,6 +220,7 @@
     
     cell.addressLabel.text = squareModel.addr;
     cell.dataArr = self.dataDic[self.addrArray[indexPath.row]];
+    
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     [cell.commentCollectionView reloadData];
     return cell;

@@ -9,6 +9,8 @@
 #import "ATNickNameViewController.h"
 #import "ATRenameRequest.h"
 #import "ATGlobal.h"
+#import "SVProgressHUD.h"
+
 @interface ATNickNameViewController () <ATRenameRequestDelegate>
 
 
@@ -22,29 +24,27 @@
     
     self.nickNameTextField.text =  self.nickName;
     
+//    [self.doneButton.titleLabel setFont:[UIFont fontWithName:@"Arial-ItalicMT" size:18.0]];
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-
-
-- (IBAction)DoneButtonClicked:(id)sender
+- (IBAction)doneButtonClicked:(id)sender
 {
     ATRenameRequest *reNameRequest=[[ATRenameRequest alloc]init];
     [reNameRequest sendReNameRequestWithName:self.nickNameTextField.text delegate:self];
+    [SVProgressHUD show];
 }
 
 -(void) renameRequestSuccess:(ATRenameRequest *)request{
+    [SVProgressHUD showSuccessWithStatus:@"更新成功"];
     [ATGlobal shareGloabl].user.username = self.nickNameTextField.text;
     [self.navigationController popViewControllerAnimated:YES];
     
 }
 
 - (void)renameRequestfail:(ATRenameRequest *)request error:(NSError *)error{
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString *errorString = [NSString stringWithFormat:@"更新失败:%@",error];
+    [SVProgressHUD showErrorWithStatus:errorString];
 }
 
 

@@ -12,7 +12,6 @@
 
 @interface ATPublishRequest()<NSURLConnectionDataDelegate>
 
-
 @end
 
 @implementation ATPublishRequest
@@ -32,11 +31,9 @@
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     request.timeoutInterval = 60;
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData; // 忽略本地和远程的缓存
-    
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     
     BLMultipartForm *form = [[BLMultipartForm alloc] init];
-    
     [form addValue:token forField:@"token"];
     [form addValue:userId forField:@"user_id"];
     [form addValue:photoData forField:@"data"];

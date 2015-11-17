@@ -22,7 +22,6 @@
     
     self.selectImageButton.layer.cornerRadius = 5.0;
     self.selectImageButton.clipsToBounds = YES;
-    
     self.headImageView.image = self.headImage;
     
 }
@@ -92,10 +91,12 @@
 {
     [ATGlobal shareGloabl].user.image = self.headImageView.image;
     [SVProgressHUD showSuccessWithStatus:@"成功"];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)reImageRequestfail:(ATReImageRequest *)request error:(NSError *)error
 {
-    [SVProgressHUD showErrorWithStatus:@"提交失败"];
+    NSString *errorString = [NSString stringWithFormat:@"更新失败:%@",error];
+    [SVProgressHUD showErrorWithStatus:errorString];
     
 }
 

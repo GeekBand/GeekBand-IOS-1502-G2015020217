@@ -18,21 +18,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-//    self.view.backgroundColor = UIColorFromRGB(0xebecec);
-//    
-    if (self.navigationController) {
-        UIBarButtonItem *backButton = [[UIBarButtonItem alloc] init];
-        backButton.title = @"返回----";
-        backButton.tintColor = [UIColor whiteColor];
-        self.navigationController.navigationItem.backBarButtonItem = backButton;
-        
-    }
 
     UIView *navigationline = [[UIView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 0.5)];
     navigationline.backgroundColor = UIColorFromRGB(0xc76935);
     [self.view addSubview:navigationline];
 
+    UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] init];
+    backBarButton.title = @"返回";
+    [self.navigationItem setBackBarButtonItem:backBarButton];
     
 }
 

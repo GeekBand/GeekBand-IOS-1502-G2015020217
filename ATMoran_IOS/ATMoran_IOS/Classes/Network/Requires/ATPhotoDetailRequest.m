@@ -18,14 +18,14 @@
     self.delegate = delegate;
     
     NSString *urlString = [NSString stringWithFormat:@"http://moran.chinacloudapp.cn/moran/web//picture/read?pic_id=%@&token=%@&user_id=%@",paramDic[@"pic_id"], paramDic[@"token"], paramDic[@"user_id"]];
-    // POST请求
+    
     NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSURL *url = [NSURL URLWithString:encodeURLString];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"GET";
     request.timeoutInterval = 60;
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData; // 忽略本地和远程的缓存
+    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request
                                                          delegate:self
@@ -49,10 +49,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    //    NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
-    //    NSLog(@"ViewDetail receive data string:%@", string);
-    //
-    //    GBMSquareRequestParser *parser = [[GBMSquareRequestParser alloc] init];
     if ([_delegate respondsToSelector:@selector(viewDetailRequestSuccess:data:)]) {
         [_delegate viewDetailRequestSuccess:self data:self.receivedData];
     }

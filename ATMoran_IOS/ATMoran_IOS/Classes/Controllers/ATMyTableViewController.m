@@ -7,7 +7,6 @@
 //
 
 #import "ATMyTableViewController.h"
-#import "AppDelegate.h"
 #import "ATGlobal.h"
 #import "ATHeadImageViewController.h"
 #import "ATNickNameViewController.h"
@@ -22,11 +21,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.nickNameLabel.text = [ATGlobal shareGloabl].user.username;
-    
     [self.headImageButton setBackgroundImage:[ATGlobal shareGloabl].user.image forState:UIControlStateNormal];
-    [self.headImageButton setImage:[ATGlobal shareGloabl].user.image forState:UIControlStateHighlighted];
-    
-    self.emailLabel.text = [ATGlobal shareGloabl].user.email;
     
 }
 
@@ -35,6 +30,7 @@
    
     self.headImageButton.layer.cornerRadius = self.headImageButton.frame.size.width / 2.0;
     self.headImageButton.clipsToBounds = YES;
+    self.emailLabel.text = [ATGlobal shareGloabl].user.email;
     
 }
 
@@ -60,8 +56,6 @@
             UIAlertAction *enterAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 [self dismissViewControllerAnimated:YES completion:nil];
                 [ATGlobal shareGloabl].user=nil;
-                AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-                [appDelegate loadLoginView];
             }];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:enterAction];

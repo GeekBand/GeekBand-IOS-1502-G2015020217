@@ -62,8 +62,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.90196078430000004" green="0.41568627450000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="O6b-gX-pbW" firstAttribute="top" secondItem="vt8-Os-UFi" secondAttribute="top" constant="59" id="187-HV-qwo"/>
-                                                    <constraint firstItem="O6b-gX-pbW" firstAttribute="centerX" secondItem="vt8-Os-UFi" secondAttribute="centerX" id="UXY-gw-L63"/>
+                                                    <constraint firstItem="O6b-gX-pbW" firstAttribute="top" secondItem="vt8-Os-UFi" secondAttribute="top" constant="59" id="KLR-sr-po9"/>
+                                                    <constraint firstItem="O6b-gX-pbW" firstAttribute="centerX" secondItem="vt8-Os-UFi" secondAttribute="centerX" id="hfQ-h4-6tI"/>
                                                     <constraint firstAttribute="height" constant="174" id="sGQ-7u-RGA"/>
                                                 </constraints>
                                             </view>
@@ -213,9 +213,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.90196078430000004" green="0.41568627450000001" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="HOp-Aq-5jy" firstAttribute="centerX" secondItem="hn2-S8-TcG" secondAttribute="centerX" id="H8Q-16-HFs"/>
+                                                    <constraint firstItem="HOp-Aq-5jy" firstAttribute="centerX" secondItem="hn2-S8-TcG" secondAttribute="centerX" id="0h2-MJ-FXP"/>
                                                     <constraint firstAttribute="height" constant="174" id="MnK-wd-RgS"/>
-                                                    <constraint firstItem="HOp-Aq-5jy" firstAttribute="top" secondItem="hn2-S8-TcG" secondAttribute="top" constant="59" id="PGW-k5-yQd"/>
+                                                    <constraint firstItem="HOp-Aq-5jy" firstAttribute="top" secondItem="hn2-S8-TcG" secondAttribute="top" constant="59" id="WDy-rN-QLr"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJS-oe-cbh">

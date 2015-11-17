@@ -14,20 +14,8 @@
 - (void)sendSquareRequestWithParameter:(NSDictionary *)paramDic delegate:(id<ATSquareRequestDelegate>)delegate
 {
     [self.urlConnection cancel];
-    
     self.delegate = delegate;
-    
-//    NSString *urlString = @"http://moran.chinacloudapp.cn/moran/web/node/list";
-//    
-//    //GET提交。参数user_id，token，longitude，latitude，distance。返回地理位置的列表，以及
-//    //各自的图片url列表。按距离排序。
-//    
-//    urlString = [NSString stringWithFormat:@"%@?user_id=%@", urlString,paramDic[@"user_id"]];
-//    urlString = [NSString stringWithFormat:@"%@&token=%@", urlString,paramDic[@"token"]];
-//    urlString = [NSString stringWithFormat:@"%@&longitude=%@", urlString,paramDic[@"longitude"]];
-//    urlString = [NSString stringWithFormat:@"%@&latitud=%@", urlString,paramDic[@"latitude"]];
-//    urlString = [NSString stringWithFormat:@"%@&distance=%@", urlString,paramDic[@"distance"]];
-    
+
     NSString *urlString = [NSString stringWithFormat:@"http://moran.chinacloudapp.cn/moran/web/node/list?distance=%@&latitude=%@&longitude=%@&token=%@&user_id=%@", paramDic[@"distance"], paramDic[@"latitude"], paramDic[@"longitude"], paramDic[@"token"], paramDic[@"user_id"]];
     
     NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

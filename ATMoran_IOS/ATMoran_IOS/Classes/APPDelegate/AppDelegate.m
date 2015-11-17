@@ -23,11 +23,6 @@
     [self.window makeKeyAndVisible];
 
     [self loadLoginView];
- 
-//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-//    self.window.rootViewController = [mainStoryboard instantiateInitialViewController];
-    
-    
     return YES;
 }
 
@@ -48,13 +43,6 @@
     
     self.loginViewController = nil;
     
-//    [UIView animateWithDuration:0.3
-//                     animations:^{
-//                         self.loginViewController.view.alpha = 0;
-//                     }
-//                     completion:^(BOOL finished){
-//                         
-//                     }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -47,7 +47,7 @@
     
     if ([CLLocationManager locationServicesEnabled]) {
         _locationManager.delegate = self;
-        _locationManager.distanceFilter = 5.0;
+        _locationManager.distanceFilter = 1000.0f;
         _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         [_locationManager startUpdatingLocation];
         

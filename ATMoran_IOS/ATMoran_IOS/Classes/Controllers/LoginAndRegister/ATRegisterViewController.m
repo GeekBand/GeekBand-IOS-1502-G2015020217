@@ -137,7 +137,7 @@
 
 - (void)registerRequireFailed:(ATRegisterRequires *)request error:(NSError *)error
 {
-    
+    NSLog(@"registerFail:%@",error);
 }
 
 #pragma mark - TextFieldDelegate

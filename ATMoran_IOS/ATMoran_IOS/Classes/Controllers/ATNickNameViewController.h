@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *nickNameTextField;
 @property (nonatomic, weak) NSString *nickName;
 
-- (IBAction)DoneButtonClicked:(id)sender;
+- (IBAction)doneButtonClicked:(id)sender;
 
 @end

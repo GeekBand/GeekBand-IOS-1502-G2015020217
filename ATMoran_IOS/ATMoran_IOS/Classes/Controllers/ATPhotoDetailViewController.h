@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *UserImage;
 @property (weak, nonatomic) IBOutlet UILabel *UserNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *TimeLabel;
+
 @property (copy,nonatomic ) NSString *pic_id;
 
 @end

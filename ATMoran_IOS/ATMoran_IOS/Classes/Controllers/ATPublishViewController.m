@@ -12,6 +12,7 @@
 #import "ATLocationManager.h"
 #import "ATGlobal.h"
 #import "SVProgressHUD.h"
+#import "GlobalTool.h"
 
 @interface ATPublishViewController () <ATLocationManagerDelegate,ATPublishRequestDelegate,UITextViewDelegate>
 {
@@ -38,6 +39,7 @@
     self.pubilshImage.image= self.publishPhoto;
     
     UIToolbar *topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    topView.backgroundColor = UIColorFromRGB(0xee7f41);
     [topView setBarStyle:UIBarStyleDefault];
     UIBarButtonItem *btnSapce = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(resignKeyboardAndShiftBack)];
@@ -60,7 +62,7 @@
 
 -(void)makePublishButton{
     
-    _publishButton = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-65, 0, 45, 30)];
+    _publishButton = [[UIButton alloc] initWithFrame:CGRectMake(self.view.frame.size.width - 55, 5, 45, 30)];
     _publishButton.backgroundColor = [UIColor whiteColor];
     [_publishButton setTitle:@"发布" forState:UIControlStateNormal];
     [_publishButton setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
@@ -144,9 +146,7 @@
     NSString *location = @"";
     NSString *addr = @"test address";
     NSData *data = UIImageJPEGRepresentation(self.pubilshImage.image, 0.00001);
-    
-    
-    
+ 
     ATPublishRequest *request = [[ATPublishRequest alloc] init];
     [request sendPublishRequestWithUserId:userId
                                     token:token
@@ -180,6 +180,8 @@
 {
     _updateLocationFinished = YES;
     self.locationLabel.text = [ATLocationManager sharedInstance].location;
+    
+    
     
 }
 
