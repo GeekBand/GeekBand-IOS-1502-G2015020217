@@ -18,5 +18,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *TimeLabel;
 
 @property (copy,nonatomic ) NSString *pic_id;
-
+@property (copy,nonatomic) NSString *pic_url;
 @end

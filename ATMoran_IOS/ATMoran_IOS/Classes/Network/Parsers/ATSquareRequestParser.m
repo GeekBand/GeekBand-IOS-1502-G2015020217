@@ -15,9 +15,9 @@
     NSError *error = nil;
     id jsonDic = [NSJSONSerialization JSONObjectWithData:data
                                                  options:NSJSONReadingAllowFragments
-     
                                                    error:&error];
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    
     if (error) {
         NSLog(@"ATSquareRequestParser is not work.");
     } else {

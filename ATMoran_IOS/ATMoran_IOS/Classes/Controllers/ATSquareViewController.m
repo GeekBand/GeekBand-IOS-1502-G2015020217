@@ -125,7 +125,8 @@
 {
     ATPhotoDetailViewController *detailVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ATPhotoDetailViewController"];
     [detailVC.PhotoImage sd_setImageWithURL:[NSURL URLWithString:pic_url]];
-    detailVC.pic_id=pic_id;
+    detailVC.pic_id = pic_id;
+    detailVC.pic_url = pic_url;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

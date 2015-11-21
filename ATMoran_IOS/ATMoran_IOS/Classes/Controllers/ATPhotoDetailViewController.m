@@ -19,8 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [SVProgressHUD show];
+    self.PhotoImage.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.pic_url]]];
     
+    [SVProgressHUD show];
+    [self viewDetailRequestHandler];
+    
+}
+
+- (void)viewDetailRequestHandler
+{
     NSString *token= [ATGlobal shareGloabl].user.token;
     NSString *userId= [ATGlobal shareGloabl].user.userId;
     
@@ -30,14 +37,18 @@
     
     ATPhotoDetailRequest *request= [[ATPhotoDetailRequest alloc]init];
     [request sendViewDetailRequestWithParameter:dic delegate:self];
-    
 }
 
--(void)viewDetailRequestSuccess:(ATPhotoDetailRequest *)request data:(NSData *)data{
-    _PhotoImage.image = [[UIImage alloc] initWithData:data];
+#pragma mark - photoDetailRequestDelegate
+-(void)ATPhotoDetailRequestSuccess:(ATPhotoDetailRequest *)request data:(ATPhotoDetailModel *)model{
+    
+    //set data
+    
+    self.TimeLabel.text = model.modified;
     [SVProgressHUD dismiss];
 }
-- (void)viewDetailRequestFailed:(ATPhotoDetailRequest *)request error:(NSError *)error{
+- (void)ATPhotoDetailRequestFailed:(ATPhotoDetailRequest *)request error:(NSError *)error
+{
     [SVProgressHUD dismiss];
 }
 

@@ -62,6 +62,8 @@
 		E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDB81BCE2794007702E7 /* ATLoginRequireParser.m */; };
 		E441CDBC1BCE368C007702E7 /* ATRegisterRequires.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */; };
 		E441CDC21BCE3832007702E7 /* ATRegisterRequireParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */; };
+		E44FB5C21BFD690E002CE4FF /* ATPhotoDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E44FB5C11BFD690E002CE4FF /* ATPhotoDetailModel.m */; };
+		E44FB5C51BFD69A1002CE4FF /* ATPhotoDetailRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E44FB5C41BFD69A1002CE4FF /* ATPhotoDetailRequestParser.m */; };
 		E458B8CA1BD3D69300379C52 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E458B8C91BD3D69300379C52 /* KxMenu.m */; };
 		E46063391BCF8BFD00CA6F20 /* ATNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46063381BCF8BFD00CA6F20 /* ATNavigationViewController.m */; };
 		E4634B121BD46E13008F8793 /* ATSquareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B111BD46E13008F8793 /* ATSquareTableViewCell.m */; };
@@ -216,6 +218,10 @@
 		E441CDBB1BCE368C007702E7 /* ATRegisterRequires.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequires.m; sourceTree = "<group>"; };
 		E441CDC01BCE3832007702E7 /* ATRegisterRequireParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterRequireParser.h; sourceTree = "<group>"; };
 		E441CDC11BCE3832007702E7 /* ATRegisterRequireParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterRequireParser.m; sourceTree = "<group>"; };
+		E44FB5C01BFD690E002CE4FF /* ATPhotoDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPhotoDetailModel.h; sourceTree = "<group>"; };
+		E44FB5C11BFD690E002CE4FF /* ATPhotoDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPhotoDetailModel.m; sourceTree = "<group>"; };
+		E44FB5C31BFD69A1002CE4FF /* ATPhotoDetailRequestParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATPhotoDetailRequestParser.h; sourceTree = "<group>"; };
+		E44FB5C41BFD69A1002CE4FF /* ATPhotoDetailRequestParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATPhotoDetailRequestParser.m; sourceTree = "<group>"; };
 		E458B8C81BD3D69300379C52 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
 		E458B8C91BD3D69300379C52 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		E46063361BCF07D900CA6F20 /* GlobalTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalTool.h; sourceTree = "<group>"; };
@@ -452,6 +458,15 @@
 			path = Header;
 			sourceTree = "<group>";
 		};
+		E44FB5BF1BFD6871002CE4FF /* Publish */ = {
+			isa = PBXGroup;
+			children = (
+				E410BF2E1BD5180300935252 /* ATPublishRequest.h */,
+				E410BF2F1BD5180300935252 /* ATPublishRequest.m */,
+			);
+			name = Publish;
+			sourceTree = "<group>";
+		};
 		E4634B1C1BD48A51008F8793 /* Square */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,8 +474,6 @@
 				E4634B1E1BD48A73008F8793 /* ATSquareRequest.m */,
 				E410BF251BD4F1AA00935252 /* ATPhotoDetailRequest.h */,
 				E410BF261BD4F1AA00935252 /* ATPhotoDetailRequest.m */,
-				E410BF2E1BD5180300935252 /* ATPublishRequest.h */,
-				E410BF2F1BD5180300935252 /* ATPublishRequest.m */,
 			);
 			name = Square;
 			sourceTree = "<group>";
@@ -586,6 +599,8 @@
 				E410BEF11BD4ED5A00935252 /* ATpictureModel.m */,
 				E410BF341BD5188D00935252 /* ATPublishModel.h */,
 				E410BF351BD5188D00935252 /* ATPublishModel.m */,
+				E44FB5C01BFD690E002CE4FF /* ATPhotoDetailModel.h */,
+				E44FB5C11BFD690E002CE4FF /* ATPhotoDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -656,6 +671,8 @@
 				E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */,
 				E410BF311BD5185200935252 /* ATPublishRequestParser.h */,
 				E410BF321BD5185200935252 /* ATPublishRequestParser.m */,
+				E44FB5C31BFD69A1002CE4FF /* ATPhotoDetailRequestParser.h */,
+				E44FB5C41BFD69A1002CE4FF /* ATPhotoDetailRequestParser.m */,
 			);
 			path = Parsers;
 			sourceTree = "<group>";
@@ -663,6 +680,7 @@
 		E48416511BCCDC76008FC68E /* Requires */ = {
 			isa = PBXGroup;
 			children = (
+				E44FB5BF1BFD6871002CE4FF /* Publish */,
 				E4634B1C1BD48A51008F8793 /* Square */,
 				E4DE55D21BD1FDE10039E2DB /* Login&Register */,
 				E4DE55D11BD1FDD80039E2DB /* My */,
@@ -855,6 +873,7 @@
 				E43884721BD13D3A00A20D36 /* MJRefreshFooter.m in Sources */,
 				E4370C631BD032550099A880 /* ATHeadImageViewController.m in Sources */,
 				E43884791BD13D3A00A20D36 /* MJRefreshBackStateFooter.m in Sources */,
+				E44FB5C51BFD69A1002CE4FF /* ATPhotoDetailRequestParser.m in Sources */,
 				E441CDB31BCE25FD007702E7 /* BLMultipartForm.m in Sources */,
 				E441CDB91BCE2794007702E7 /* ATLoginRequireParser.m in Sources */,
 				E4634B181BD4782C008F8793 /* ATPhotoDetailViewController.m in Sources */,
@@ -864,6 +883,7 @@
 				E484164B1BCCD2CC008FC68E /* main.m in Sources */,
 				E4634B1F1BD48A73008F8793 /* ATSquareRequest.m in Sources */,
 				E410BF151BD4EF8E00935252 /* MKAnnotationView+WebCache.m in Sources */,
+				E44FB5C21BFD690E002CE4FF /* ATPhotoDetailModel.m in Sources */,
 				E4DE55D01BD1F9BB0039E2DB /* ATGetHeadImageRequest.m in Sources */,
 				E4634B121BD46E13008F8793 /* ATSquareTableViewCell.m in Sources */,
 				E43884741BD13D3A00A20D36 /* MJRefreshAutoGifFooter.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "ATPhotoDetailRequest.h"
+#import "ATPhotoDetailRequestParser.h"
 
 @implementation ATPhotoDetailRequest
 
@@ -17,7 +18,7 @@
     
     self.delegate = delegate;
     
-    NSString *urlString = [NSString stringWithFormat:@"http://moran.chinacloudapp.cn/moran/web//picture/read?pic_id=%@&token=%@&user_id=%@",paramDic[@"pic_id"], paramDic[@"token"], paramDic[@"user_id"]];
+    NSString *urlString = [NSString stringWithFormat:@"http://moran.chinacloudapp.cn/moran/web/comment?user_id=%@&token=%@&pic_id=%@",paramDic[@"user_id"], paramDic[@"token"], paramDic[@"pic_id"]];
     
     NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
@@ -49,16 +50,22 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    if ([_delegate respondsToSelector:@selector(viewDetailRequestSuccess:data:)]) {
-        [_delegate viewDetailRequestSuccess:self data:self.receivedData];
+//    NSString *receivedString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+//    NSLog(@"detail:%@",receivedString);
+    
+    ATPhotoDetailRequestParser *parser = [[ATPhotoDetailRequestParser alloc] init];
+    ATPhotoDetailModel *photoDetailModel = [parser parseJson:self.receivedData];
+    
+    if ([_delegate respondsToSelector:@selector(ATPhotoDetailRequestSuccess:data:)]) {
+        [_delegate ATPhotoDetailRequestSuccess:self data:photoDetailModel];
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"error = %@", error);
-    if ([_delegate respondsToSelector:@selector(viewDetailRequestFailed:error:)]) {
-        [_delegate viewDetailRequestFailed:self error:error];
+    if ([_delegate respondsToSelector:@selector(ATPhotoDetailRequestFailed:error:)]) {
+        [_delegate ATPhotoDetailRequestFailed:self error:error];
     }
 }
 

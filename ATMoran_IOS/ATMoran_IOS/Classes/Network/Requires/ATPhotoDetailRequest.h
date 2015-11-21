@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ATPhotoDetailModel.h"
 @class ATPhotoDetailRequest;
 
 @protocol ATPhotoDetailRequestDelegate <NSObject>
 
-- (void)viewDetailRequestSuccess:(ATPhotoDetailRequest *)request data:(NSData *)dictionary;
+- (void)ATPhotoDetailRequestSuccess:(ATPhotoDetailRequest *)request data:(ATPhotoDetailModel *)model;
 
-- (void)viewDetailRequestFailed:(ATPhotoDetailRequest *)request error:(NSError *)error;
+- (void)ATPhotoDetailRequestFailed:(ATPhotoDetailRequest *)request error:(NSError *)error;
 
 @end
 
