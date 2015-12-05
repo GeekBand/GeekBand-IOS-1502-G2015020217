@@ -37,7 +37,7 @@
 
 -(void) renameRequestSuccess:(ATRenameRequest *)request{
     [SVProgressHUD showSuccessWithStatus:@"更新成功"];
-    [ATGlobal shareGloabl].user.username = self.nickNameTextField.text;
+    [ATGlobal shareGlobal].user.username = self.nickNameTextField.text;
     [self.navigationController popViewControllerAnimated:YES];
     
 }

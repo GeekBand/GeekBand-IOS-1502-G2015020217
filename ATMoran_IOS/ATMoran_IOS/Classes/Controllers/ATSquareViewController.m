@@ -176,8 +176,8 @@
 #pragma mark - squareRequestDelegate
 - (void)squareRequestHandlerWithinDistance:(NSString *)distance
 {
-    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGloabl].user.userId,
-                               @"token":[ATGlobal shareGloabl].user.token,
+    NSDictionary *paramDic = @{@"user_id":[ATGlobal shareGlobal].user.userId,
+                               @"token":[ATGlobal shareGlobal].user.token,
                                @"longitude":@"121.47794",
                                @"latitude":@"31.22516",
                                @"distance":distance};

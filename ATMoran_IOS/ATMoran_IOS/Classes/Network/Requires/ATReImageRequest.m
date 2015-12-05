@@ -12,31 +12,27 @@
 
 @implementation ATReImageRequest
 
-- (void)sendReNameRequestWithImage:(UIImage *)image delegate:(id<ATReImageRequestDelegate>)delegate
+- (void)sendReImageRequestWithImage:(UIImage *)image delegate:(id<ATReImageRequestDelegate>)delegate
 {
     [self.urlConnection cancel];
-    
     self.delegate = delegate;
     
     NSString *urlString = @"http://moran.chinacloudapp.cn/moran/web//user/avatar";
     NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:encodeURLString];
-    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     request.timeoutInterval = 60;
     request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     
-    
     NSData *data;
     data = UIImageJPEGRepresentation(image, 0.000001);
     
-    
     BLMultipartForm *form = [[BLMultipartForm alloc] init];
-    [form addValue: [ATGlobal shareGloabl].user.userId forField:@"user_id"];
-    [form addValue:[ATGlobal shareGloabl].user.token forField:@"token"];
+    [form addValue: [ATGlobal shareGlobal].user.userId forField:@"user_id"];
+    [form addValue:[ATGlobal shareGlobal].user.token forField:@"token"];
     [form addValue:data forField:@"data"];
-    request.HTTPBody = [form httpBody];
+    request.HTTPBody = [form httpBodyForImage];
     [request setValue:form.contentType forHTTPHeaderField:@"Content-Type"];
     
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request
@@ -76,6 +72,12 @@
     if ([_delegate respondsToSelector:@selector(reImageRequestfail:error:)]) {
         [_delegate reImageRequestfail:self error:error];
     }
+}
+
+- (void)connection:(NSURLConnection *)connection didSendBodyData:(NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
+    NSLog(@"bytesWritten: %ld", (long)bytesWritten);
+    NSLog(@"totalWritten: %ld", (long)totalBytesWritten);
+    NSLog(@"totalBytesExpectedToWrite: %ld", (long)totalBytesWritten);
 }
 
 @end

@@ -27,8 +27,8 @@
     request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
     
     BLMultipartForm *form = [[BLMultipartForm alloc] init];
-    [form addValue: [ATGlobal shareGloabl].user.userId forField:@"user_id"];
-    [form addValue:[ATGlobal shareGloabl].user.token forField:@"token"];
+    [form addValue: [ATGlobal shareGlobal].user.userId forField:@"user_id"];
+    [form addValue:[ATGlobal shareGlobal].user.token forField:@"token"];
     [form addValue:name forField:@"new_name"];
     request.HTTPBody = [form httpBody];
     [request setValue:form.contentType forHTTPHeaderField:@"Content-Type"];

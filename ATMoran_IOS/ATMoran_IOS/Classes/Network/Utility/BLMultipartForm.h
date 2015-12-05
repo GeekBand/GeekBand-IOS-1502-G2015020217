@@ -20,6 +20,7 @@
 
 - (void)addValue:(id)value forField:(NSString *)field;
 - (NSData *)httpBody;
+- (NSData *)httpBodyForImage;
 - (NSString *)boundary;
 - (NSString *)contentType;
 

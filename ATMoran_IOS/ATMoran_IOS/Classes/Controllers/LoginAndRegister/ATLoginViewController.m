@@ -205,8 +205,8 @@
         [appDelegate loadMainViewWithController:self];
         
         
-        [ATGlobal shareGloabl].user = user;
-        [ATGlobal shareGloabl].user.email= self.emailTextField.text;
+        [ATGlobal shareGlobal].user = user;
+        [ATGlobal shareGlobal].user.email= self.emailTextField.text;
         
         ATGetHeadImageRequest *getImageRequest=[[ATGetHeadImageRequest alloc]init];
         [getImageRequest sendGetImageRequest];

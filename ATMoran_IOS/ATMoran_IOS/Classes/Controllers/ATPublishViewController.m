@@ -138,8 +138,8 @@
 - (void)publishRequestHandler
 {
 
-    NSString *userId = [ATGlobal shareGloabl].user.userId;
-    NSString *token = [ATGlobal shareGloabl].user.token;
+    NSString *userId = [ATGlobal shareGlobal].user.userId;
+    NSString *token = [ATGlobal shareGlobal].user.token;
     NSString *longitude = [ATLocationManager sharedInstance].longitude;
     NSString *latitude = [ATLocationManager sharedInstance].latitude;
     NSString *title = self.titleTextView.text;//not nil

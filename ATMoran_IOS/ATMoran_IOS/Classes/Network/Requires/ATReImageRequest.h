@@ -24,7 +24,7 @@
 @property (nonatomic, strong) NSMutableData *receivedData;
 @property (nonatomic, assign) id <ATReImageRequestDelegate> delegate;
 
-- (void)sendReNameRequestWithImage:(UIImage *)image
+- (void)sendReImageRequestWithImage:(UIImage *)image
                           delegate:(id <ATReImageRequestDelegate>)delegate;
 
 

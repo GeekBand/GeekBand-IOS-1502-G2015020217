@@ -28,8 +28,8 @@
 
 - (void)viewDetailRequestHandler
 {
-    NSString *token= [ATGlobal shareGloabl].user.token;
-    NSString *userId= [ATGlobal shareGloabl].user.userId;
+    NSString *token= [ATGlobal shareGlobal].user.token;
+    NSString *userId= [ATGlobal shareGlobal].user.userId;
     
     NSDictionary *dic=@{@"pic_id":_pic_id,
                         @"token":token,

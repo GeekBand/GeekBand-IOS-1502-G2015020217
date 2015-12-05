@@ -9,11 +9,10 @@
 #import "ATGlobal.h"
 
 static ATGlobal *global = nil;
+
 @implementation ATGlobal
 
-
-
-+ (ATGlobal *)shareGloabl
++ (ATGlobal *)shareGlobal
 {
     if (global == nil) {
         global = [[ATGlobal alloc] init];

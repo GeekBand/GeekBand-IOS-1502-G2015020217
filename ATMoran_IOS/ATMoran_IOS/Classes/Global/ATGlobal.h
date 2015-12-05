@@ -14,6 +14,6 @@
 
 @property(nonatomic, strong)ATUserModel *user;
 
-+ (ATGlobal *)shareGloabl;
++ (ATGlobal *)shareGlobal;
 
 @end

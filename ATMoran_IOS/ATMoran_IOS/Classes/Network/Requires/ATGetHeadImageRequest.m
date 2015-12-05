@@ -13,51 +13,13 @@
 
 - (void) sendGetImageRequest{
     
-    [self.urlConnection cancel];
     NSString *urlString = @"http://moran.chinacloudapp.cn/moran/web/user/show";
-    urlString = [NSString stringWithFormat:@"%@?user_id=%@", urlString,[ATGlobal shareGloabl].user.userId];
-    NSString *encodedURLString
-    = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *url = [NSURL URLWithString:encodedURLString];
-    
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    request.HTTPMethod = @"GET";
-    request.timeoutInterval = 60;
-    request.cachePolicy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-    self.urlConnection = [[NSURLConnection alloc] initWithRequest:request
-                                                         delegate:self
-                                                 startImmediately:YES];
-}
-
-#pragma mark - request
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
-{
-    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
-    if (httpResponse.statusCode == 200) {
-        self.receivedData = [NSMutableData data];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
-{
-    
-    [self.receivedData appendData:data];
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection
-{
-    UIImage *image = [UIImage imageWithData:self.receivedData scale:0.1];
-    
-    [ATGlobal shareGloabl].user.image = image;
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
-{
-    NSLog(@"getImage error = %@", error.description);
+    urlString = [NSString stringWithFormat:@"%@?user_id=%@", urlString, [ATGlobal shareGlobal].user.userId];
+    NSString *encodeURLString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:encodeURLString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    [ATGlobal shareGlobal].user.image = [UIImage imageWithData:data];
     
 }
-
 
 @end

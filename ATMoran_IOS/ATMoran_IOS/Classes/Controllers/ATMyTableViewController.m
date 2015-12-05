@@ -20,8 +20,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.nickNameLabel.text = [ATGlobal shareGloabl].user.username;
-    [self.headImageButton setBackgroundImage:[ATGlobal shareGloabl].user.image forState:UIControlStateNormal];
+    self.nickNameLabel.text = [ATGlobal shareGlobal].user.username;
+    [self.headImageButton setBackgroundImage:[ATGlobal shareGlobal].user.image forState:UIControlStateNormal];
     
 }
 
@@ -30,7 +30,7 @@
    
     self.headImageButton.layer.cornerRadius = self.headImageButton.frame.size.width / 2.0;
     self.headImageButton.clipsToBounds = YES;
-    self.emailLabel.text = [ATGlobal shareGloabl].user.email;
+    self.emailLabel.text = [ATGlobal shareGlobal].user.email;
     
 }
 
@@ -55,7 +55,7 @@
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"确定注销吗？" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *enterAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
                 [self dismissViewControllerAnimated:YES completion:nil];
-                [ATGlobal shareGloabl].user=nil;
+                [ATGlobal shareGlobal].user=nil;
             }];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:enterAction];
@@ -72,10 +72,10 @@
 {
     if ([segue.identifier isEqualToString:@"settingNickName"]) {
         ATNickNameViewController *nickNameVC = segue.destinationViewController;
-        nickNameVC.nickName = [ATGlobal shareGloabl].user.username;
+        nickNameVC.nickName = [ATGlobal shareGlobal].user.username;
     } else if ([segue.identifier isEqualToString:@"settingHeadImage"] || [segue.identifier isEqualToString:@"settingHeadImage_btn"]) {
         ATHeadImageViewController *headImageVC = segue.destinationViewController;
-        headImageVC.headImage = [ATGlobal shareGloabl].user.image;
+        headImageVC.headImage = [ATGlobal shareGlobal].user.image;
     }
 }
 

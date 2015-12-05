@@ -33,12 +33,12 @@
 
 - (IBAction)doneButtonClicked:(id)sender {
     
-    if (self.headImage == [ATGlobal shareGloabl].user.image) {
+    if (self.headImage == [ATGlobal shareGlobal].user.image) {
         [SVProgressHUD showSuccessWithStatus:@"图片相同"];
     }else {
         [SVProgressHUD showWithStatus:@"提交中" maskType:SVProgressHUDMaskTypeClear];
         ATReImageRequest * request= [[ATReImageRequest alloc]init];
-        [request sendReNameRequestWithImage:self.headImageView.image delegate:self];
+        [request sendReImageRequestWithImage:self.headImageView.image delegate:self];
     }
     
 }
@@ -89,7 +89,7 @@
 
 -(void)reImageRequestSuccess:(ATReImageRequest *)request
 {
-    [ATGlobal shareGloabl].user.image = self.headImageView.image;
+    [ATGlobal shareGlobal].user.image = self.headImageView.image;
     [SVProgressHUD showSuccessWithStatus:@"成功"];
     [self.navigationController popViewControllerAnimated:YES];
 }

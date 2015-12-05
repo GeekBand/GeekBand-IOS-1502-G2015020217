@@ -10,9 +10,6 @@
 
 @interface ATGetHeadImageRequest : NSObject <NSURLConnectionDataDelegate>
 
-@property (nonatomic, strong) NSURLConnection *urlConnection;
-@property (nonatomic, strong) NSMutableData *receivedData;
-
 - (void)sendGetImageRequest;
 
 @end
