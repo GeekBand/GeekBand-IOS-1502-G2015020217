@@ -43,7 +43,7 @@
     [form addValue:latitude forField:@"latitude"];
     [form addValue:addr forField:@"addr"];
     
-    request.HTTPBody = [form httpBody];
+    request.HTTPBody = [form httpBodyForImage];
     [request setValue:form.contentType forHTTPHeaderField:@"Content-Type"];
     
     self.urlConnection = [[NSURLConnection alloc] initWithRequest:request
@@ -54,18 +54,18 @@
 
 
 #pragma mark - request
-
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
     if (httpResponse.statusCode == 200) {
         self.receivedData = [NSMutableData data];
+    }else {
+        NSLog(@"PublishRequest-httpfail:%ld",(long)httpResponse.statusCode);
     }
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    self.receivedData = [NSMutableData data];
     [self.receivedData appendData:data];
 }
 
@@ -74,11 +74,15 @@
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"receive data string:%@", string);
     
-    ATPublishRequestParser *parser =[[ATPublishRequestParser alloc]init];
-    ATPublishModel* model =  [parser parseJson:self.receivedData];
-    if ([_delegate respondsToSelector:@selector(requestSuccess:picId:)]) {
-        [_delegate requestSuccess:self picId:model.picId];
+    if (self.receivedData) {
+        ATPublishRequestParser *parser =[[ATPublishRequestParser alloc]init];
+        ATPublishModel* model =  [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(requestSuccess:picId:)]) {
+            [_delegate requestSuccess:self picId:model.picId];
+        }
     }
+    
+    
    
 }
 

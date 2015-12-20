@@ -60,9 +60,12 @@
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"ReImage receive data string:%@", string);
     
-    if ([_delegate respondsToSelector:@selector(reImageRequestSuccess:)]) {
-        [_delegate reImageRequestSuccess:self];
+    if (self.receivedData) {
+        if ([_delegate respondsToSelector:@selector(reImageRequestSuccess:)]) {
+            [_delegate reImageRequestSuccess:self];
+        }
     }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

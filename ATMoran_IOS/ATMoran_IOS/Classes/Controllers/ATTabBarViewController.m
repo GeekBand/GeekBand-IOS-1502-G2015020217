@@ -76,7 +76,7 @@
             self.pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
             self.pickerController.allowsEditing = YES;
             self.pickerController.delegate = self;
-                       [self presentViewController:self.pickerController animated:YES completion:nil];
+            [self presentViewController:self.pickerController animated:YES completion:nil];
             
         }else {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:@"无法获取照相机" delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
@@ -86,7 +86,6 @@
     }else if(buttonIndex == 1){
         self.pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         self.pickerController.delegate = self;
-        
         self.pickerController.navigationBar.barTintColor = UIColorFromRGB(0xee7f41);
         self.pickerController.navigationBar.tintColor = [UIColor whiteColor];
         UIFont* font = [UIFont systemFontOfSize:19];

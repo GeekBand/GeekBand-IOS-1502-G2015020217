@@ -58,9 +58,12 @@
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"ReName data string:%@", string);
     
-    if ([_delegate respondsToSelector:@selector(renameRequestSuccess:)]) {
-        [_delegate renameRequestSuccess:self];
+    if (self.receivedData) {
+        if ([_delegate respondsToSelector:@selector(renameRequestSuccess:)]) {
+            [_delegate renameRequestSuccess:self];
+        }
     }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

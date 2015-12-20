@@ -68,16 +68,15 @@
     NSString *stirng = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"receive data string:%@",stirng);
     
-    ATLoginRequireParser *parser = [[ATLoginRequireParser alloc] init];
-    ATUserModel *user = nil;
-    
     if (self.receivedData) {
-        user = [parser parseJson:self.receivedData];
+        ATLoginRequireParser *parser = [[ATLoginRequireParser alloc] init];
+        ATUserModel *user = [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(loginRequiresSuccess:user:)]) {
+            [_delegate loginRequiresSuccess:self user:user];
+        }
     }
     
-    if ([_delegate respondsToSelector:@selector(loginRequiresSuccess:user:)]) {
-        [_delegate loginRequiresSuccess:self user:user];
-    }
+    
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

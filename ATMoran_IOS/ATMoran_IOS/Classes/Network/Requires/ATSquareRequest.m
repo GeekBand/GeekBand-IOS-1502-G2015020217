@@ -48,16 +48,16 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
-    NSDictionary *dic = nil;
+//    NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
+//    NSLog(@"receive data string:%@", string);
     if (self.receivedData) {
-        dic = [parser parseJson:self.receivedData];
+        ATSquareRequestParser *parser = [[ATSquareRequestParser alloc] init];
+        NSDictionary *dic = [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(squareRequestSuccess:dictionary:)]) {
+            [_delegate squareRequestSuccess:self dictionary:dic];
+        }
     }
-    
-    if ([_delegate respondsToSelector:@selector(squareRequestSuccess:dictionary:)]) {
-        [_delegate squareRequestSuccess:self dictionary:dic];
-    }
-    
+   
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

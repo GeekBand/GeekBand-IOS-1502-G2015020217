@@ -74,8 +74,6 @@
 		E4634B251BD48C0C008F8793 /* ATSquareRequestParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E4634B241BD48C0C008F8793 /* ATSquareRequestParser.m */; };
 		E46790061BCD2DC900C39944 /* ATLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790031BCD2DC900C39944 /* ATLoginViewController.m */; };
 		E46790071BCD2DC900C39944 /* ATRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46790051BCD2DC900C39944 /* ATRegisterViewController.m */; };
-		E484161F1BCCCC02008FC68E /* ATMoran_IOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */; };
-		E484162A1BCCCC02008FC68E /* ATMoran_IOSUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E48416291BCCCC02008FC68E /* ATMoran_IOSUITests.m */; };
 		E48416481BCCD2CC008FC68E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E484163B1BCCD2CC008FC68E /* AppDelegate.m */; };
 		E48416491BCCD2CC008FC68E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E48416441BCCD2CC008FC68E /* Assets.xcassets */; };
 		E484164B1BCCD2CC008FC68E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E48416471BCCD2CC008FC68E /* main.m */; };
@@ -89,23 +87,6 @@
 		E4DE55D51BD1FE060039E2DB /* ATRenameRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55D41BD1FE060039E2DB /* ATRenameRequest.m */; };
 		E4DE55D81BD1FFFD0039E2DB /* ATReImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DE55D71BD1FFFD0039E2DB /* ATReImageRequest.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E484161B1BCCCC02008FC68E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E48415F91BCCCC01008FC68E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E48416001BCCCC01008FC68E;
-			remoteInfo = ATMoran_IOS;
-		};
-		E48416261BCCCC02008FC68E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E48415F91BCCCC01008FC68E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E48416001BCCCC01008FC68E;
-			remoteInfo = ATMoran_IOS;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		E410BEF01BD4ED5A00935252 /* ATpictureModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATpictureModel.h; sourceTree = "<group>"; };
@@ -244,12 +225,6 @@
 		E46790041BCD2DC900C39944 /* ATRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ATRegisterViewController.h; sourceTree = "<group>"; };
 		E46790051BCD2DC900C39944 /* ATRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ATRegisterViewController.m; sourceTree = "<group>"; };
 		E48416011BCCCC02008FC68E /* ATMoran_IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ATMoran_IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E484161A1BCCCC02008FC68E /* ATMoran_IOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATMoran_IOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMoran_IOSTests.m; sourceTree = "<group>"; };
-		E48416201BCCCC02008FC68E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E48416251BCCCC02008FC68E /* ATMoran_IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ATMoran_IOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E48416291BCCCC02008FC68E /* ATMoran_IOSUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ATMoran_IOSUITests.m; sourceTree = "<group>"; };
-		E484162B1BCCCC02008FC68E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E484163A1BCCD2CC008FC68E /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E484163B1BCCD2CC008FC68E /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E48416441BCCD2CC008FC68E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -274,20 +249,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		E48415FE1BCCCC01008FC68E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E48416171BCCCC02008FC68E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E48416221BCCCC02008FC68E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -493,8 +454,6 @@
 			isa = PBXGroup;
 			children = (
 				E48416371BCCD2CC008FC68E /* ATMoran_IOS */,
-				E484161D1BCCCC02008FC68E /* ATMoran_IOSTests */,
-				E48416281BCCCC02008FC68E /* ATMoran_IOSUITests */,
 				E48416021BCCCC02008FC68E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -503,28 +462,8 @@
 			isa = PBXGroup;
 			children = (
 				E48416011BCCCC02008FC68E /* ATMoran_IOS.app */,
-				E484161A1BCCCC02008FC68E /* ATMoran_IOSTests.xctest */,
-				E48416251BCCCC02008FC68E /* ATMoran_IOSUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E484161D1BCCCC02008FC68E /* ATMoran_IOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				E484161E1BCCCC02008FC68E /* ATMoran_IOSTests.m */,
-				E48416201BCCCC02008FC68E /* Info.plist */,
-			);
-			path = ATMoran_IOSTests;
-			sourceTree = "<group>";
-		};
-		E48416281BCCCC02008FC68E /* ATMoran_IOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				E48416291BCCCC02008FC68E /* ATMoran_IOSUITests.m */,
-				E484162B1BCCCC02008FC68E /* Info.plist */,
-			);
-			path = ATMoran_IOSUITests;
 			sourceTree = "<group>";
 		};
 		E48416371BCCD2CC008FC68E /* ATMoran_IOS */ = {
@@ -751,42 +690,6 @@
 			productReference = E48416011BCCCC02008FC68E /* ATMoran_IOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E48416191BCCCC02008FC68E /* ATMoran_IOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E48416311BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSTests" */;
-			buildPhases = (
-				E48416161BCCCC02008FC68E /* Sources */,
-				E48416171BCCCC02008FC68E /* Frameworks */,
-				E48416181BCCCC02008FC68E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E484161C1BCCCC02008FC68E /* PBXTargetDependency */,
-			);
-			name = ATMoran_IOSTests;
-			productName = ATMoran_IOSTests;
-			productReference = E484161A1BCCCC02008FC68E /* ATMoran_IOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		E48416241BCCCC02008FC68E /* ATMoran_IOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E48416341BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSUITests" */;
-			buildPhases = (
-				E48416211BCCCC02008FC68E /* Sources */,
-				E48416221BCCCC02008FC68E /* Frameworks */,
-				E48416231BCCCC02008FC68E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E48416271BCCCC02008FC68E /* PBXTargetDependency */,
-			);
-			name = ATMoran_IOSUITests;
-			productName = ATMoran_IOSUITests;
-			productReference = E48416251BCCCC02008FC68E /* ATMoran_IOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -798,14 +701,6 @@
 				TargetAttributes = {
 					E48416001BCCCC01008FC68E = {
 						CreatedOnToolsVersion = 7.0;
-					};
-					E48416191BCCCC02008FC68E = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = E48416001BCCCC01008FC68E;
-					};
-					E48416241BCCCC02008FC68E = {
-						CreatedOnToolsVersion = 7.0;
-						TestTargetID = E48416001BCCCC01008FC68E;
 					};
 				};
 			};
@@ -823,8 +718,6 @@
 			projectRoot = "";
 			targets = (
 				E48416001BCCCC01008FC68E /* ATMoran_IOS */,
-				E48416191BCCCC02008FC68E /* ATMoran_IOSTests */,
-				E48416241BCCCC02008FC68E /* ATMoran_IOSUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -840,20 +733,6 @@
 				E4D3AF961BD0FF8D0007D6CD /* SVProgressHUD.bundle in Resources */,
 				E48416581BCCDDC9008FC68E /* ATLoginAndRegister.storyboard in Resources */,
 				E43890041BCE896B003AD589 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E48416181BCCCC02008FC68E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E48416231BCCCC02008FC68E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,36 +819,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E48416161BCCCC02008FC68E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E484161F1BCCCC02008FC68E /* ATMoran_IOSTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E48416211BCCCC02008FC68E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E484162A1BCCCC02008FC68E /* ATMoran_IOSUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E484161C1BCCCC02008FC68E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E48416001BCCCC01008FC68E /* ATMoran_IOS */;
-			targetProxy = E484161B1BCCCC02008FC68E /* PBXContainerItemProxy */;
-		};
-		E48416271BCCCC02008FC68E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E48416001BCCCC01008FC68E /* ATMoran_IOS */;
-			targetProxy = E48416261BCCCC02008FC68E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		E484162C1BCCCC02008FC68E /* Debug */ = {
@@ -1078,54 +928,6 @@
 			};
 			name = Release;
 		};
-		E48416321BCCCC02008FC68E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ATMoran_IOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ants.ATMoran-IOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ATMoran_IOS.app/ATMoran_IOS";
-			};
-			name = Debug;
-		};
-		E48416331BCCCC02008FC68E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ATMoran_IOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ants.ATMoran-IOSTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ATMoran_IOS.app/ATMoran_IOS";
-			};
-			name = Release;
-		};
-		E48416351BCCCC02008FC68E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ATMoran_IOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ants.ATMoran-IOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ATMoran_IOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		E48416361BCCCC02008FC68E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = ATMoran_IOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Ants.ATMoran-IOSUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = ATMoran_IOS;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1143,24 +945,6 @@
 			buildConfigurations = (
 				E484162F1BCCCC02008FC68E /* Debug */,
 				E48416301BCCCC02008FC68E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E48416311BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E48416321BCCCC02008FC68E /* Debug */,
-				E48416331BCCCC02008FC68E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E48416341BCCCC02008FC68E /* Build configuration list for PBXNativeTarget "ATMoran_IOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E48416351BCCCC02008FC68E /* Debug */,
-				E48416361BCCCC02008FC68E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

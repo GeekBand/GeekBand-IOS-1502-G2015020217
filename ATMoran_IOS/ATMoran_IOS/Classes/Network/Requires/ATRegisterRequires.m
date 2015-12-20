@@ -60,18 +60,14 @@
     NSString *string = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
     NSLog(@"receive data string:%@", string);
     
-    
-    ATRegisterRequireParser *parser = [[ATRegisterRequireParser alloc] init];
-    
-    ATUserModel *user = nil;
-    
     if (self.receivedData) {
-       user = [parser parseJson:self.receivedData];
+        ATRegisterRequireParser *parser = [[ATRegisterRequireParser alloc] init];
+        ATUserModel *user = [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(registerRequireSuccess:user:)]) {
+            [_delegate registerRequireSuccess:self user:user];
+        }
     }
-    
-    if ([_delegate respondsToSelector:@selector(registerRequireSuccess:user:)]) {
-        [_delegate registerRequireSuccess:self user:user];
-    }
+        
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

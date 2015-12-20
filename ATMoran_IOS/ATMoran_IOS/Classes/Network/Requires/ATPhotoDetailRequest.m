@@ -52,13 +52,15 @@
 {
 //    NSString *receivedString = [[NSString alloc] initWithData:self.receivedData encoding:NSUTF8StringEncoding];
 //    NSLog(@"detail:%@",receivedString);
-    
-    ATPhotoDetailRequestParser *parser = [[ATPhotoDetailRequestParser alloc] init];
-    ATPhotoDetailModel *photoDetailModel = [parser parseJson:self.receivedData];
-    
-    if ([_delegate respondsToSelector:@selector(ATPhotoDetailRequestSuccess:data:)]) {
-        [_delegate ATPhotoDetailRequestSuccess:self data:photoDetailModel];
+  
+    if (self.receivedData) {
+        ATPhotoDetailRequestParser *parser = [[ATPhotoDetailRequestParser alloc] init];
+        ATPhotoDetailModel *photoDetailModel = [parser parseJson:self.receivedData];
+        if ([_delegate respondsToSelector:@selector(ATPhotoDetailRequestSuccess:data:)]) {
+            [_delegate ATPhotoDetailRequestSuccess:self data:photoDetailModel];
+        }
     }
+  
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error

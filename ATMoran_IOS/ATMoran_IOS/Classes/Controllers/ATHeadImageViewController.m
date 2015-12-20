@@ -10,6 +10,7 @@
 #import "ATGlobal.h"
 #import "ATReImageRequest.h"
 #import "SVProgressHUD.h"
+#import "GlobalTool.h"
 @interface ATHeadImageViewController () <UINavigationControllerDelegate,UIImagePickerControllerDelegate, UIActionSheetDelegate,ATReImageRequestDelegate>
 
 
@@ -63,6 +64,10 @@
     if (buttonIndex == 0) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            imagePicker.delegate = self;
+            imagePicker.allowsEditing = YES;
+            [self presentViewController:imagePicker animated:YES completion:nil];
+
         } else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                             message:@"无法获取相机"
@@ -74,9 +79,19 @@
     } else if (buttonIndex == 1) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         imagePicker.delegate = self;
+        imagePicker.navigationBar.barTintColor = UIColorFromRGB(0xee7f41);
+        imagePicker.navigationBar.tintColor = [UIColor whiteColor];
+        UIFont* font = [UIFont systemFontOfSize:19];
+        NSDictionary* textAttributes = @{NSFontAttributeName:font,
+                                         NSForegroundColorAttributeName:[UIColor whiteColor]};
+        imagePicker.navigationBar.titleTextAttributes = textAttributes;
+        imagePicker.delegate = self;
         imagePicker.allowsEditing = YES;
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
+    
+    
+    
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
